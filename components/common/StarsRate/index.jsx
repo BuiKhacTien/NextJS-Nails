@@ -1,5 +1,4 @@
 import React from 'react'
-import './styles/styles.css'
 const Index = ({ rate = 0, change, theme = "light", size = 'md', type = "comment", name = "star" }) => {
    const handleRateChange = (e) => {
       if (change) change(e.target.value)

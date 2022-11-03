@@ -1,10 +1,16 @@
 import "../styles/globals.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-toastify/dist/ReactToastify.css';
+
 import Head from "next/head";
 import { useEffect } from "react";
 import Layout from "../layouts/Default.jsx";
 import { Provider } from "react-redux";
 import store from "../store";
+import React from 'react'
+import { appWithTranslation } from 'next-i18next';
 
 function MyApp({ Component, pageProps }) {
 
@@ -40,4 +46,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

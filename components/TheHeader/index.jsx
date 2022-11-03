@@ -16,10 +16,10 @@ import { useDispatch, useSelector } from "react-redux";
 import userApi from "../../api/userApi";
 import { CATEGORIES } from "../../constants/constants";
 import appApi from "../../api/appApi";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from 'next-i18next'
 import { ButtonChange } from "./ButtonChange/ButtonChange";
 const Index = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('translation');
   const [openSidebar, setOpenSidebar] = React.useState(false);
   const [text, setText] = React.useState("");
   const [categories, setCategories] = React.useState("");
@@ -33,6 +33,21 @@ const Index = () => {
   const onOpenSidebar = () => {
     setOpenSidebar(!openSidebar);
   };
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      dispatch({ type: "user/login", payload: accessToken });
+    }
+  },[]);
+  useEffect(() => {
+    userApi.info().then((res) => {
+      if (res) {
+        dispatch({ type: "user/setProfile", payload: res });
+        dispatch({ type: "user/update", payload: false });
+      }
+    });
+  }, [])
 
   const searchString = new URLSearchParams(router.asPath).get("searchString");
   useEffect(() => {
@@ -92,11 +107,9 @@ const Index = () => {
                 </Link>
               </div>
               <div className="header-actions__mobile">
-                <div style={{display: "flex"}}>
+                <div style={{ display: "flex" }}>
                   <Link
-                    href={
-                      isLogin ? "/my-account/account" : "/register-login/form1"
-                    }
+                    href={isLogin ? "/my-account/account" : "/login-register"}
                     className="header__link_padding header-actions__user-link"
                   >
                     <i className="fas fa-user icon_user"></i>
@@ -178,12 +191,12 @@ const Index = () => {
               </>
             ) : (
               <>
-                <Link href="/register-login/form1">
+                <Link href="/login-register">
                   <a className="header__link header-actions__user-link">
                     {t("Login")}
                   </a>
                 </Link>
-                <Link href="/register-login/form1">
+                <Link href="/login-register">
                   <a className="header__link header-actions__user-link">
                     {t("Register")}
                   </a>

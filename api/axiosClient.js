@@ -14,8 +14,10 @@ const axiosClient = axios.create({
   paramsSerializer: (params) => Qs.stringify(params, { skipNulls: true }),
 });
 axiosClient.interceptors.request.use(async (config) => {
-  const accessToken = localStorage.getItem("accessToken");
-  config.headers.Authorization = `Bearer ${accessToken}`;
+  if (process.browser) {
+    const accessToken = localStorage.getItem("accessToken");
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
   return config;
 });
 
