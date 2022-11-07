@@ -3,6 +3,7 @@
   --bs-purple:  #1B74E4 !important;
   --bs-green: #0ccc15 !important;
   --bs-gray-dark: #333 !important;
+  --bs-danger: red !important;
 }
 
 html,
@@ -818,10 +819,14 @@ input[type=number] {
   justify-content: center;
 }
 
-.card-home-image img {
+.card_home_img_pc {
   width: auto;
   max-width: 100%;
   height: 200px;
+}
+.card_home_img_mobile {
+  width: 100%;
+  height: auto;
 }
 
 .card-home a {
@@ -918,7 +923,7 @@ input[type=number] {
 
 .card_home_color_pc {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   font-size: 0.9rem;
   font-weight: 500;
   margin-top: 1px;
@@ -3135,7 +3140,7 @@ https://flickity.metafizzy.co
 /**  */
 .content {
   padding-top: 2rem;
-  background: var(--bs-white);
+  /* background: var(--bs-white); */
 }
 .content ul{
   list-style: none;
@@ -3197,7 +3202,6 @@ font-size: 1.8em;
   background-position: -94px 0;
 }
 .list-card .sprite.card_icons {
-  background-image: url(/src/assets/images/card.png);
   background-size: 136px 118px;
 }
 .list-card .sprite {

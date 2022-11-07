@@ -34,6 +34,7 @@ export default function Home() {
     dealsOfDay,
     trending,
     diy,
+    newProducts,
     bestSellers,
     lastView,
     lastOrdered,
@@ -60,7 +61,8 @@ export default function Home() {
     getDealsCenter("Deals-of-Day", "dealsOfDay");
     getDealsCenter("TRENDING", "trending");
     getDealsCenter("DIY", "diy");
-    getFlashSales();
+    getDealsCenter("Flash-Sale", "flashSales");
+    // getFlashSales();
     getLatest();
     getFeatureVideo();
     isMobile && setNumItem(3);
@@ -256,24 +258,18 @@ export default function Home() {
   //     ? flashSales.slice(0, 1)
   //     : flashSales.slice(0, 2);
 
-  const newGroupSale = groupSale?.filter((v) => v.endPromotion !== null);
-  const newDealsOfDay = dealsOfDay?.filter((v) => v.endPromotion !== null);
-  const newFlashSale = flashSales?.filter((v) => v.endPromotion !== null);
+  // const newGroupSale = groupSale?.filter((v) => v.endPromotion !== null);
+  // const newDealsOfDay = dealsOfDay?.filter((v) => v.endPromotion !== null);
+  // const newFlashSale = flashSales?.filter((v) => v.endPromotion !== null);
+  const [showFlashSale, setShowFlashSale] = useState(2);
 
-  // tào lao
-  // const filtersHeight = listHome.map(value => {
-  //   const arr = value.products.filter(product => {
-  //     if (product.videoWidth === 0 && product.videoHeight === 0) {
-  //       return product.fullName
-  //     }
-  //   })
-  //   return {
-  //     category: value.name,
-  //     listFeature: arr
-  //   }
-  // })
-  // console.log(filtersHeight)
-
+  useEffect(() => {
+    if (lastView.length > 0) {
+      setShowFlashSale(1);
+    } else {
+      setShowFlashSale(2);
+    }
+  }, [lastView]);
   return (
     <>
       <Head>
@@ -291,10 +287,7 @@ export default function Home() {
             {background.map((v) => {
               return (
                 <div className="home_slider_box" key={v.id}>
-                  <Link
-                    href={v.url}
-                    className="media-detail carousel__cell"
-                  >
+                  <Link href={v.url} className="media-detail carousel__cell">
                     <img
                       src={v.imageUrl}
                       alt="BG"
@@ -353,7 +346,7 @@ export default function Home() {
                     </div>
                   );
                 })}
-              {isMobile && newDealsOfDay?.length > 0 && (
+              {isMobile && dealsOfDay?.length > 0 && (
                 <p className="title-category__home">
                   <span>{t("Deals of day")}</span>
                   <Link href={"/deals-center/Deals-of-Day"}>
@@ -361,7 +354,7 @@ export default function Home() {
                   </Link>
                 </p>
               )}
-              {newDealsOfDay?.slice(0, 1).map((v, i) => {
+              {dealsOfDay?.slice(0, 1).map((v, i) => {
                 return (
                   <div key={`3-${i}-${v.id}`}>
                     <CardHome
@@ -400,7 +393,7 @@ export default function Home() {
                   </div>
                 );
               })}
-              {isMobile && newFlashSale.length > 0 && (
+              {isMobile && flashSales.length > 0 && (
                 <p className="title-category__home">
                   <span>{t("FLASH SALES")}</span>
                   <Link href={"/deals-center/Flash-Sale"}>
@@ -408,7 +401,7 @@ export default function Home() {
                   </Link>
                 </p>
               )}
-              {newFlashSale.map((v, i) => {
+              {flashSales?.slice(0, showFlashSale).map((v, i) => {
                 // console.log("flashSalesViaLastView:", v)
                 return (
                   <div key={`2-${i}-${v.id}`}>
@@ -469,7 +462,7 @@ export default function Home() {
                   />
                 </div>
               ))}
-              {diy.slice(0, 2).map((v, i) => (
+              {diy.slice(0, 1).map((v, i) => (
                 <div key={i + "adas"}>
                   {isMobile && diy.length > 0 && i === 0 && (
                     <p className="title-category__home">
@@ -494,8 +487,33 @@ export default function Home() {
                   </div>
                 </div>
               ))}
+              {newProducts.slice(0, 1).map((v, i) => (
+                <div key={i + "adas"}>
+                  {isMobile && diy.length > 0 && i === 0 && (
+                    <p className="title-category__home">
+                      <span>{t("New Product")}</span>
+                    </p>
+                  )}
+                  <div
+                    key={`5-${i}-${v.id}`}
+                    // className={`grid__item${isMobile && i === 0 ? -1 : i}`}
+                    className="grid__item-1"
+                  >
+                    <CardHome
+                      name={`5-${i}-${v.id}`}
+                      //topTitle={userName}
+                      topText={`${t("New Product")}`}
+                      // fluid={isMobile || i === 0}
+                      fluid={isMobile}
+                      data={v}
+                      grid24={i + 1}
+                      numItem={numItem}
+                    />
+                  </div>
+                </div>
+              ))}
             </section>
-            {newGroupSale?.length > 0 && (
+            {groupSale?.length > 0 && (
               <p className="title-category__home">
                 <span>{t("Group Sale")}</span>
                 <Link href={"/deals-center/group-sale"}>
@@ -504,7 +522,7 @@ export default function Home() {
               </p>
             )}
             <section className="grid__4">
-              {newGroupSale?.slice(0, 4).map((v, i) => (
+              {groupSale?.slice(0, 4).map((v, i) => (
                 <div key={`6-${i}-${v.id}`}>
                   <CardHome
                     name={`6-${i}-${v.id}`}
@@ -606,11 +624,16 @@ export default function Home() {
   );
 }
 
-
 const FlickityCell = ({ item, isMobile, name, numItem }) => {
   return (
     <div className="slider__cell">
-      <CardHome fluid={isMobile} slide={true} name={name} data={item} numItem={numItem}/>
+      <CardHome
+        fluid={isMobile}
+        slide={true}
+        name={name}
+        data={item}
+        numItem={numItem}
+      />
     </div>
   );
 };

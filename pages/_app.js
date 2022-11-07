@@ -2,18 +2,17 @@ import "../styles/globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 import Head from "next/head";
 import { useEffect } from "react";
 import Layout from "../layouts/Default.jsx";
 import { Provider } from "react-redux";
 import store from "../store";
-import React from 'react'
-import { appWithTranslation } from 'next-i18next';
+import React from "react";
+
 
 function MyApp({ Component, pageProps }) {
-
   useEffect(() => {
     window.fbAsyncInit = function () {
       FB.init({
@@ -38,12 +37,12 @@ function MyApp({ Component, pageProps }) {
   });
 
   return (
-    <Provider store={store}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </Provider>
+      <Provider store={store}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
   );
 }
 
-export default appWithTranslation(MyApp);
+export default MyApp;

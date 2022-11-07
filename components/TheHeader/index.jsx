@@ -19,7 +19,7 @@ import appApi from "../../api/appApi";
 import { useTranslation, Trans } from 'next-i18next'
 import { ButtonChange } from "./ButtonChange/ButtonChange";
 const Index = () => {
-  const { t } = useTranslation('translation');
+  const { t } = useTranslation();
   const [openSidebar, setOpenSidebar] = React.useState(false);
   const [text, setText] = React.useState("");
   const [categories, setCategories] = React.useState("");

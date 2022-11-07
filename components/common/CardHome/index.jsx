@@ -412,7 +412,7 @@ const Index = ({
           </div>
         ) : (
           <div className="card-home-image">
-            <img src={BASE_IMG + mainImage} alt="background" />
+            <img src={BASE_IMG + mainImage} alt="background" className={isMobile ? "card_home_img_mobile" : "card_home_img_pc"}/>
           </div>
         )}
         <div className={`card-home__price__block container`}>
