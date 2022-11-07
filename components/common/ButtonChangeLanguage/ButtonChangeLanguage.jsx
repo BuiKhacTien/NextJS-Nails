@@ -1,8 +1,6 @@
 import React from "react";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import i18next from "i18next";
-import { useRouter } from "next/router";
-
 
 const GlobeIcon = ({ width = 24, height = 24 }) => (
   <svg
@@ -17,14 +15,13 @@ const GlobeIcon = ({ width = 24, height = 24 }) => (
   </svg>
 );
 
-
 const ButtonChangeLanguage = (props) => {
-  const router = useRouter();
-  const onToggleLanguageClick = (newLocale) => {
-    console.log({newLocale});
-    const { pathname, asPath, query } = router;
-    router.push({ pathname, query }, asPath, { locale: newLocale });
-  };
+  // const router = useRouter();
+  // const onToggleLanguageClick = (newLocale) => {
+  //   console.log({newLocale});
+  //   const { pathname, asPath, query } = router;
+  //   router.push({ pathname, query }, asPath, { locale: newLocale });
+  // };
 
   return (
     <React.Fragment>
@@ -33,20 +30,17 @@ const ButtonChangeLanguage = (props) => {
         title={<GlobeIcon />}
         variant="secondary"
       >
-        {props.dataLanguages.map(({ code, name, country_code }) => {
-          return (
-            <NavDropdown.Item
-              onClick={() => onToggleLanguageClick(code)}
-              key={country_code}
-            >
-              <div style={{ paddingTop: 10, paddingBottom: 10 }}>{name}</div>
-            </NavDropdown.Item>
-          );
-        })}
+        {props.dataLanguages.map(({ code, name, country_code }) => (
+          <NavDropdown.Item
+            onClick={() => i18next.changeLanguage(code)}
+            key={country_code}
+          >
+            <div style={{ paddingTop: 10, paddingBottom: 10 }}>{name}</div>
+          </NavDropdown.Item>
+        ))}
       </NavDropdown>
     </React.Fragment>
   );
 };
-
 
 export default ButtonChangeLanguage;

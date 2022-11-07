@@ -16,8 +16,10 @@ import { useDispatch, useSelector } from "react-redux";
 import userApi from "../../api/userApi";
 import { CATEGORIES } from "../../constants/constants";
 import appApi from "../../api/appApi";
-import { useTranslation, Trans } from 'next-i18next'
+import { useTranslation } from "react-i18next";
 import { ButtonChange } from "./ButtonChange/ButtonChange";
+
+
 const Index = () => {
   const { t } = useTranslation();
   const [openSidebar, setOpenSidebar] = React.useState(false);
@@ -39,15 +41,24 @@ const Index = () => {
     if (accessToken) {
       dispatch({ type: "user/login", payload: accessToken });
     }
-  },[]);
-  useEffect(() => {
-    userApi.info().then((res) => {
-      if (res) {
-        dispatch({ type: "user/setProfile", payload: res });
-        dispatch({ type: "user/update", payload: false });
-      }
-    });
-  }, [])
+    if (user !== {}) {
+      userApi.info().then((res) => {
+        if (res) {
+          dispatch({ type: "user/setProfile", payload: res });
+        }
+      });
+    }
+  },[router]);
+  
+ 
+  // useEffect(() => {
+  //   userApi.info().then((res) => {
+  //     if (res) {
+  //       dispatch({ type: "user/setProfile", payload: res });
+  //       dispatch({ type: "user/update", payload: false });
+  //     }
+  //   });
+  // }, [])
 
   const searchString = new URLSearchParams(router.asPath).get("searchString");
   useEffect(() => {
@@ -68,6 +79,7 @@ const Index = () => {
   useEffect(() => {
     if (isLogin) getNumWishList();
   }, [isLogin]);
+
   const onLogout = () => {
     dispatch({ type: "user/logout" });
     router.push("/");
@@ -85,7 +97,7 @@ const Index = () => {
       `/catalogsearch?category_id=null&searchString=${text}&pageIndex=1&pageSize=200`
     );
   };
-  const { screenWidth } = useSelector((state) => state.app);
+
   return (
     <header>
       <div className="header__wrapper">
