@@ -65,9 +65,9 @@ const Index = ({ data, name = "detail__review-stars" }) => {
     if (!isLogin) {
       const link = router.asPath;
       dispatch(addInfoComments({params, link}));
-      return router.push("/register-login/form1");
+      return router.push("/login-register");
     }
-
+    
     setLoading(true);
     productApi.addComment(params).then((res) => {
       if (res) {

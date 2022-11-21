@@ -444,11 +444,12 @@ export default function Home() {
                 <span>{t("TRENDING")}</span>
               </p>
             )}
-            <section className="grid__24">
+            <section className="grid__4">
               {trending.slice(0, 1).map((v, i) => (
                 <div
                   key={`5-${i}-${v.id}`}
-                  className={`grid__item${isMobile && i === 0 ? -1 : i}`}
+                  // className={`grid__item${isMobile && i === 0 ? -1 : i}`}
+                  className="grid__item-1"
                 >
                   <CardHome
                     name={`5-${i}-${v.id}`}
@@ -457,7 +458,7 @@ export default function Home() {
                     // fluid={isMobile || i === 0}
                     fluid={isMobile}
                     data={v}
-                    grid24={i}
+                    // grid24={i}
                     numItem={numItem}
                   />
                 </div>
@@ -481,13 +482,13 @@ export default function Home() {
                       // fluid={isMobile || i === 0}
                       fluid={isMobile}
                       data={v}
-                      grid24={i + 1}
+                      // grid24={i + 1}
                       numItem={numItem}
                     />
                   </div>
                 </div>
               ))}
-              {newProducts.slice(0, 1).map((v, i) => (
+              {newProducts.slice(0, 2).map((v, i) => (
                 <div key={i + "adas"}>
                   {isMobile && diy.length > 0 && i === 0 && (
                     <p className="title-category__home">
@@ -506,7 +507,7 @@ export default function Home() {
                       // fluid={isMobile || i === 0}
                       fluid={isMobile}
                       data={v}
-                      grid24={i + 1}
+                      // grid24={i + 1}
                       numItem={numItem}
                     />
                   </div>
@@ -540,7 +541,7 @@ export default function Home() {
             {listResponsive.map((item, i) => {
               let to = "category";
               const { slug_Name } = item;
-              if (dealsCenter.some((value) => value.slug_Name === slug_Name)) {
+              if (dealsCenter?.some((value) => value.slug_Name === slug_Name)) {
                 to = "deals-center";
               }
               if (item.products.length > 0) {

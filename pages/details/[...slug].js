@@ -95,9 +95,10 @@ export async function getServerSideProps(context) {
   let ogdescription = "";
   if (res) {
     URL = "http://178.63.64.96:8897" + url
-    ogmainImage = BASE_IMG + res.mainImage;
-    ogfullName = res.fullName;
-    ogdescription = res.description.replace(/%20/g, " ");
+    ogmainImage = BASE_IMG + res.mainImage
+    ogfullName = res.fullName
+    ogdescription = res.details
+    // ogdescription = res.details.replace(/%20/g, " ");
   }
   return {
     props: { URL, ogmainImage, ogfullName, ogdescription }, // will be passed to the page component as props
@@ -105,7 +106,6 @@ export async function getServerSideProps(context) {
 }
 
 export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) {
-
   const currentLanguageCode = cookies.get('i18next') === 'en' ? true: false;
   const { t } = useTranslation()
   const [id, setId] = useState(0);

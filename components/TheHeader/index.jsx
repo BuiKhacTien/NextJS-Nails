@@ -41,7 +41,7 @@ const Index = () => {
     if (accessToken) {
       dispatch({ type: "user/login", payload: accessToken });
     }
-    if (user !== {}) {
+    if (user !== {} && accessToken) {
       userApi.info().then((res) => {
         if (res) {
           dispatch({ type: "user/setProfile", payload: res });

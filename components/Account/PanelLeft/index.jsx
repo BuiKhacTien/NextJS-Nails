@@ -7,32 +7,7 @@ import { useTranslation } from "react-i18next";
 import  Cookie from 'js-cookie'
 import { useRouter } from "next/router";
 
-const links = [
-  {
-    name: "Profile",
-    to: "account",
-  },
-  {
-    name: "Shipping Address",
-    to: "address",
-  },
-  {
-    name: "My Orders",
-    to: "your-order",
-  },
-  {
-    name: "Reward",
-    to: "reward",
-  },
-  {
-    name: "Payment Method",
-    to: "payment",
-  },
-  {
-    name: "Communication Preference",
-    to: "communication-preferences",
-  },
-];
+
 function NavItem({ name, to }) {
   const {t} = useTranslation()
   const router = useRouter();
@@ -55,6 +30,32 @@ function NavItem({ name, to }) {
   );
 }
 const Index = () => {
+  const links = [
+    {
+      name: "Profile",
+      to: "account",
+    },
+    {
+      name: "Shipping Address",
+      to: "address",
+    },
+    {
+      name: "My Orders",
+      to: "your-order",
+    },
+    {
+      name: "Reward",
+      to: "reward",
+    },
+    {
+      name: "Payment Method",
+      to: "payment",
+    },
+    {
+      name: "Communication Preference",
+      to: "communication-preferences",
+    },
+  ];
   const {t} = useTranslation()
   const router = useRouter();
   const { user } = useSelector((state) => state.user);
@@ -80,7 +81,7 @@ const Index = () => {
         </div>
       </div>
       <ul className="aside-account-header__list">
-        {links.map((v, k) => (
+        {links?.map((v, k) => (
           <NavItem key={k} {...v} />
         ))}
       </ul>

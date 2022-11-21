@@ -100,7 +100,7 @@ const Index = () => {
         <div className="new-products__block">
           <Slider {...settings}>
             {bestSellers.map((v, i) => (
-              <div className="carousel-new-products__cell">
+              <div key={i+"bestsellers"} className="carousel-new-products__cell">
                 <CardHome data={v} />
               </div>
             ))}
