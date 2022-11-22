@@ -84,20 +84,19 @@ const LayoutReposive = ({ isMobile = false, children }) => {
 };
 
 export async function getServerSideProps(context) {
-  const url = context.req.url
-  const arr = url.split('/')
-  const id = arr[3]
-  const featureId = arr[4]
+  const { resolvedUrl, query } = context
+  const id = query.slug[1]
+  const featureId =  typeof(query.slug[2]) !== String ? '0' : query.slug[2]
   const res = await productApi.info(id, featureId);
   let URL = "";
   let ogmainImage = "";
   let ogfullName = "";
   let ogdescription = "";
   if (res) {
-    URL = "http://178.63.64.96:8897" + url
+    URL = "http://178.63.64.96:8897" + resolvedUrl
     ogmainImage = BASE_IMG + res.mainImage
     ogfullName = res.fullName
-    ogdescription = res.details
+    ogdescription = res.description.replace(/%20/g, " ").replace(/%2C/g, ", ");
     // ogdescription = res.details.replace(/%20/g, " ");
   }
   return {
@@ -286,7 +285,7 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
     productRelated = [],
     details,
   } = info;
-  
+
   return (
     <>
       <Head>
@@ -336,10 +335,10 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
               className="mb-3"
             >
               <Tab eventKey="home" title="Description">
-                <div dangerouslySetInnerHTML={{ __html: details }}></div>
+                {details.length > 0 ? <div dangerouslySetInnerHTML={{ __html: details }}></div> : <div></div>}
               </Tab>
               <Tab eventKey="profile" title="Specs">
-                <div dangerouslySetInnerHTML={{ __html: specifications }}></div>
+                {specifications.length > 0 ? <div dangerouslySetInnerHTML={{ __html: specifications }}></div> : <div></div>}
               </Tab>
             </Tabs>
           </div>
