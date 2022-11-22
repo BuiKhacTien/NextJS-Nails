@@ -285,14 +285,14 @@ export default function Home() {
         <div className="home-page__slider">
           <Slider {...settingsBG}>
             {background.map((v) => {
+              const href = v.url.replace("https://nailsbeautysupply.com/", "")
               return (
-                <div className="home_slider_box" key={v.id}>
-                  <Link href={v.url} className="media-detail carousel__cell">
-                    <img
-                      src={v.imageUrl}
-                      alt="BG"
-                      className="home_slider_img"
-                    />
+                <div key={v.id} className='home_slider_box'>
+                  <Link
+                    href={href ? `/${href}` : '/'}
+                    className="media-detail carousel__cell"
+                  >
+                    <img src={v.imageUrl} alt="BG" />
                   </Link>
                 </div>
               );

@@ -93,6 +93,9 @@ a {
   }
 }
 
+.home_slider_box {
+  cursor: pointer;
+}
 /** layout */
 .layout_default {
   background-color: #eaeded;
