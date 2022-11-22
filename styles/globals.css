@@ -94,6 +94,9 @@ a {
 }
 
 /** layout */
+.layout_default {
+  background-color: #eaeded;
+}
 .scroll-top {
   background-color: rgba(50, 50, 50, 0.5);
   height: 50px;

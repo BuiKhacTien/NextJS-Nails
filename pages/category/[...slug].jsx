@@ -119,7 +119,7 @@ export default function Index() {
       }, [pageIndex])
       useEffect(() => {
         dispatch({
-          type: "app/setPage",
+          type: "app/setPageCategory",
           payload: page
         })
         setPagination({

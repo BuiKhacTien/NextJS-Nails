@@ -10,7 +10,7 @@ import Layout from "../layouts/Default.jsx";
 import { Provider } from "react-redux";
 import store from "../store";
 import React from "react";
-
+import {SSRProvider} from '@react-aria/ssr'; 
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -37,11 +37,13 @@ function MyApp({ Component, pageProps }) {
   });
 
   return (
+    <SSRProvider>
       <Provider store={store}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
       </Provider>
+    </SSRProvider>
   );
 }
 

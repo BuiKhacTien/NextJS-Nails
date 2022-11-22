@@ -12,6 +12,7 @@ const initialState = {
   flashSales: [],
   latest: [],
   categories: [],
+  searchResult: [],
   info: [{}],
 };
 export default function index(state = initialState, action) {

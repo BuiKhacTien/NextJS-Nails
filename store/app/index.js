@@ -5,10 +5,22 @@ const initialState = {
   numWishList: 0,
   menu: [],
   comment: {},
-	stepCheckout:0
+  stepCheckout: 0,
+  numItemHome: 0,
+  pageIndexCategory: 1,
+  pageIndexDealsCenter: 1,
+  pageIndexSearch: 1,
 };
 export default function index(state = initialState, action) {
   switch (action.type) {
+    case "app/setPageCategory":
+      return { ...state, pageIndexCategory: action.payload };
+    case "app/setPageDealsCenter":
+      return { ...state, pageIndexDealsCenter: action.payload };
+    case "app/setPageSearch":
+      return { ...state, pageIndexSearch: action.payload };
+    case "app/setNumItemHome":
+      return { ...state, numItemHome: action.payload };
     case "app/setMobile":
       const status = action.payload < 768 ? true : false;
       return { ...state, isMobile: status, screenWidth: action.payload };
@@ -25,7 +37,7 @@ export default function index(state = initialState, action) {
     case "app/clearComment":
       return { ...state, comment: {} };
     case "app/nextStepCheckout":
-			localStorage.setItem('STEP_CHECK_OUT',action.payload)
+      localStorage.setItem("STEP_CHECK_OUT", action.payload);
       return { ...state, stepCheckout: action.payload };
     default:
       return state;

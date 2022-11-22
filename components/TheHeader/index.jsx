@@ -93,9 +93,8 @@ const Index = () => {
   };
   const searchCatalog = (e) => {
     e.preventDefault();
-    router.push(
-      `/catalogsearch?category_id=null&searchString=${text}&pageIndex=1&pageSize=200`
-    );
+    // router.push(`/catalogsearch?category_id=null&searchString=${text}&pageIndex=1&pageSize=200`);
+    router.push(`/search/${text}`);
   };
 
   return (

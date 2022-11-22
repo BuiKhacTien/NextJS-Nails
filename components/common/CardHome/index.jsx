@@ -239,7 +239,7 @@ const Index = ({
       });
     }
   };
-  const refs = useRef();
+  // const refs = useRef();
   const onPlay = () => {};
   const onPause = () => {
     const video = document.getElementsByTagName("video");

@@ -13,7 +13,7 @@ const Default = ({ children }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   return (
-    <div style={{ background: "#eaeded" }} className="layout__default">
+    <div className="layout_default">
       <TheHeader />
       <main>{children}</main>
       <TheFooter />
