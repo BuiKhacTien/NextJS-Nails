@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -8,7 +8,7 @@ import CardHome from "../../components/common/CardHome"
 import Pagination from '@mui/material/Pagination';
 
 
-export default function index() {
+export default function Index() {
   const [filters, setFilters] = useState({});
   const { searchResult, filter } = useSelector((state) => state.product);
   const dispatch = useDispatch();
@@ -59,6 +59,7 @@ export default function index() {
   
   const { pageIndexSearch } = useSelector(state => state.app)
   const [pageHeight, setPageHeight] = useState(true)
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setPageHeight(false)
@@ -73,6 +74,7 @@ export default function index() {
       setPage(pageIndexSearch)
     }
   }, [pageIndexSearch])
+
   useEffect(() => {
     dispatch({
       type: "app/setPageSearch",
@@ -83,6 +85,7 @@ export default function index() {
       end: page*20,
     })
   }, [page])
+
   useEffect(() => {
     if (arr.length > 20) {
       setCountPage(Math.ceil(arr.length/20))
