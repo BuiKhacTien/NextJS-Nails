@@ -94,7 +94,7 @@ const Index = () => {
   const searchCatalog = (e) => {
     e.preventDefault();
     // router.push(`/catalogsearch?category_id=null&searchString=${text}&pageIndex=1&pageSize=200`);
-    router.push(`/search/${text}`);
+    router.push(`/search/${text}/1`);
   };
 
   return (
@@ -138,9 +138,9 @@ const Index = () => {
                   </Link>
                 </div>
                 {/* button change lang */}
-                <div className="header__link_languages header-actions__user-link">
+                {/* <div className="header__link_languages header-actions__user-link">
                   <ButtonChange />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -221,7 +221,7 @@ const Index = () => {
             >
               <i className="fas fa-shopping-cart shopping_cart"></i>
             </Link>
-            <ButtonChange />
+            {/* <ButtonChange /> */}
           </div>
         </div>
         <div className="container">

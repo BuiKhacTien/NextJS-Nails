@@ -102,8 +102,8 @@ const Index = () => {
                         ))}
                      </FooterList>
                      <FooterList title="Tài khoản của tôi">
-                        <Link to="/register-login/form1">Đăng nhập</Link>
-                        <Link to="/register-login/form1">Tạo tài khoản</Link>
+                        <Link to="/login-register">Đăng nhập</Link>
+                        <Link to="/login-register">Tạo tài khoản</Link>
                      </FooterList>
                   </div>
                   <div className="d-none d-md-block col-md-2">

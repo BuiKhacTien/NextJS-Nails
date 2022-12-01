@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import StarsRate from "../../common/StarsRate";
-import SEND from "../../../assets/images/send.png";
 import Button from "react-bootstrap/Button";
 import productApi from "../../../api/productApi";
 import { showSuccess } from "../../../utils/app";
@@ -8,9 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { BASE_IMG } from "../../../constants/appSetting";
 import { useTranslation } from "react-i18next";
 import { addInfoComments } from "../../../store/user/userActions";
-import { useRouter } from "next/router";
 import dynamic from 'next/dynamic';
+import { useRouter } from "next/router";
 
+const SEND = require("../../../assets/images/send.png");
 
 const InputImage = ({ onChange, value }) => {
   const Dropzone = dynamic(() => import('react-drop-zone'), { ssr: false });
@@ -103,7 +103,7 @@ const Index = ({ data, name = "detail__review-stars" }) => {
 
         <InputImage onChange={handleChangeImage} value={image} />
         <Button disabled={loading} type="submit" variant="link">
-          <img src={SEND} alt="send" />
+          <img src={SEND.default.src} alt="send" />
         </Button>
       </form>
       {img && (

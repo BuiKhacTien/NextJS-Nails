@@ -11,21 +11,15 @@ import { useRouter } from "next/router";
 function NavItem({ name, to }) {
   const {t} = useTranslation()
   const router = useRouter();
-  const pathname = router.pathname;
-  const [title,setTitle] = useState("")
-  const checkActive = (pathname) => {
-    return pathname === `my-account/${to}`;
+  const asPath = router.asPath;
+  console.log(router)
+  const checkActive = (asPath) => {
+    return asPath === `/my-account/${to}`;
   };
-  const isActive = checkActive(pathname);
-  const checkCookies =Cookie.get('i18next');
-  React.useEffect(()=>{
-    if(checkCookies){
-      return setTitle(`${t(name)}`)
-    }
-  },[checkCookies])
+  const isActive = checkActive(asPath);
   return (
     <li className={`aside-account-header__item ${isActive ? "active" : ""}`}>
-      <Link href={to}>{title}</Link>
+      <Link href={to}>{name}</Link>
     </li>
   );
 }

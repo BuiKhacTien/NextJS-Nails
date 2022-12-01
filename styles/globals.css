@@ -256,7 +256,6 @@ a {
   color: white;
   padding: 10px;
   cursor: pointer;
-  margin-right: 10px;
 }
 
 .shopping_cart:hover {
@@ -408,6 +407,7 @@ a {
 .header-actions__user {
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 .header-actions__user .dropdown-menu.show{
   font-size: 1.2rem;
@@ -1354,7 +1354,7 @@ input[type=number] {
   align-items: center;
 }
 .share-panel.bg-circle.copy {
-  background-color: var(--bs-gray);
+  background-color: rgb(220, 37, 37) !important;
 }
 .share-panel.bg-circle.facebook {
   background-color: var(--bs-primary);
@@ -1363,8 +1363,40 @@ input[type=number] {
   background-color: white;
 }
 
+.share_panel_box {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
 
-
+.share_panel_item {
+  margin: 10px;
+}
+.share_panel_item_icon {
+  font-size: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  color: rgb(71, 71, 71);
+  transition: all ease-in-out 500ms;
+}
+.share_panel_item_facebook {
+  display: flex;
+  justify-content: center;
+}
+.share_panel_item_gmail_img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+.share_panel_item_text {
+  font-weight: 700;
+  padding: 10px;
+}
 /** common/CheckBox */
 .nails-checkbox__wrapper{
   display: flex;
@@ -1556,8 +1588,20 @@ label.star:before {
 }
 
 /** Detail/DetailFeature */
-.detail-feature h5{
-  font-weight: 600;
+.detail-feature {
+
+}
+.detail_feature_share_facebook {
+  display: flex;
+}
+.detail_feature_share_facebook_title {
+  margin: 10px  ;
+}
+.detais_facebook_icon {
+  font-size: 35px;
+  color: rgb(27,116,228);
+  margin: 10px 0;
+  cursor: pointer;
 }
 .detail-feature__stars-review {
   display: flex;
@@ -2543,7 +2587,7 @@ https://flickity.metafizzy.co
   cursor: pointer;
 }
 .aside-account-header__item.active {
-  background: var(--bs-light);
+  background: rgb(187, 187, 187, 0.4);
 }
 
 .aside-account-header__list {
@@ -2554,10 +2598,11 @@ https://flickity.metafizzy.co
 
 .aside-account-header__list li {
   cursor: pointer;
+  color: black;
 }
 
 .aside-account-header__list li:hover {
-  background: var(--bs-light);
+  background: rgb(178, 178, 178, 0.7);
 }
 
 .aside-account-header__list li a {

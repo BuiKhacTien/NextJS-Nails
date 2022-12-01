@@ -32,7 +32,7 @@ const Index = ({ data, onUpdate }) => {
   const { t } = useTranslation();
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!isLogin) return router.push("/register-login/form1");
+    if (!isLogin) return router.push("/login-register");
     const params = dtoParams(data);
     setLoading(true);
     productApi

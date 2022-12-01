@@ -32,7 +32,7 @@ const CartItem = ({ data = {} }) => {
       })
       .catch((e) => {
         if (e.status && e.status === "NOT_LOGIN") {
-          router.push("/register-login/form1");
+          router.push("/login-register");
         }
         setLoading(false);
       });

@@ -5,13 +5,19 @@ import StarsRate from "../../common/StarsRate";
 import Discount from "../../common/CardHome/Discount";
 import ButtonQtyCart from "../../common/ButtonQtyCart";
 import ButtonAddCart from "../../common/ButtonAddCart";
-import DISCOUNT_IMG from "../../../assets/images/discount.png";
+
 import { BASE_IMG, formCart } from "../../../constants/appSetting";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { nextStepCheckout } from "../../../store/app/appActions";
 import cartApi from "../../../api/cartApi";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+} from 'next-share';
+
+const DISCOUNT_IMG = require("../../../assets/images/discount.png");
 
 const showDiscountPrice = (price, discountPrice, group_Sale_Price, isReach) => {
   if (group_Sale_Price && group_Sale_Price > 0) {
@@ -137,7 +143,17 @@ const Index = ({ data = {}, onSelected }) => {
 
   return (
     <section className="detail-feature">
-      <h5>{fullName}</h5>
+      <h1>{fullName}</h1>
+      <div className="detail_feature_share_facebook">
+        <FacebookShareButton
+          url={`http://178.63.64.96:8913${router ? router.asPath : ""}`}
+          // quote={'next-share is a social share buttons for your next React apps.'}
+          hashtag={'#nail #nailsupply #nailbeautysupply #beautysupply #lashessupply #acrylic #dippowder'}
+        >
+          <FacebookIcon size={40} round />
+        </FacebookShareButton>
+        <div className="detail_feature_share_facebook_title"> Share Facebook</div>
+      </div>
       <div className="detail-feature__stars-review">
         <StarsRate name="detail_feature" rate={avg_Stars} />
         {/* <a className="detail-feature__stars-review__link" href="#">
@@ -150,7 +166,7 @@ const Index = ({ data = {}, onSelected }) => {
         </p>
         {newPrice && (
           <p className="detail-feature__price-new">
-            <img src={DISCOUNT_IMG} alt="discount" />${newPrice}
+            <img src={DISCOUNT_IMG.default.src} alt="discount" />${newPrice}
           </p>
         )}{" "}
       </div>

@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-import WARNING from '../../../assets/images/warning.jpg'
+
+
+const WARNING = require('../../../assets/images/warning.jpg')
 
 const Index = ({ show, setShow, onSubmit, onClose, title = "Do you sure delete address?" }) => {
 
@@ -25,7 +27,7 @@ const Index = ({ show, setShow, onSubmit, onClose, title = "Do you sure delete a
          <Modal.Body>
             <div className="text-center">
                <div className="confirm__img">
-                  <img src={WARNING} alt="warning" />
+                  <img src={WARNING.default.src} alt="warning" />
                </div>
                <h3>{title}</h3>
             </div>

@@ -178,7 +178,7 @@ function Index({
             onReady={() => setReady(true)}
             onEnded={handleChangeEndedTrue}
             width={width}
-            height={height ? height : "auto"}
+            height={height ? height : undefined}
             controls
             muted
             playsinline

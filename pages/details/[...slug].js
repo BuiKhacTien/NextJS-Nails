@@ -29,6 +29,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { LAST_VIEW } from "../../constants/appSetting";
 import { BASE_IMG } from '../../constants/appSetting';
 
+import { BsFacebook } from "react-icons/bs"
+
+
 const getColorInSize = (info, featureId) => {
   if (info.productColorSize.length === 0) return {};
   for (let i = 0; i < info.productColorSize.length; i++) {

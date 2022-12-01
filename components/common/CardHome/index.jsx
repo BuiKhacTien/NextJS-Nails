@@ -24,6 +24,7 @@ import Discount from "./Discount";
 import { useTranslation } from "react-i18next";
 import Cookies from "js-cookie";
 import { isBuffer } from "lodash";
+
 const LikeIcon = ({ isLiked }) => {
   if (isLiked) return <i className="fas fa-thumbs-up"></i>;
   return <i className="far fa-thumbs-up"></i>;
@@ -59,6 +60,8 @@ const Index = ({
   grid24,
 }) => {
   const {
+    videoHeight,
+    videoWidth,
     fullName,
     endPromotion,
     discountPromotion,
@@ -98,9 +101,7 @@ const Index = ({
   const { isLogin } = useSelector((state) => state.user);
   const { productCartModels } = cart;
   const router =  useRouter();
-  const showSharePanel = (show) => {
-    setShowShare(show);
-  };
+
   const paramsCart = () => {
     const indexInCart = productCartModels.findIndex(
       (existingItem) =>
@@ -310,8 +311,7 @@ const Index = ({
       dispatch({ type: "app/clearComment" });
     }
   }, [comment]);
-  const videoHeight = 0;
-  const videoWidth = 0;
+  console.log("isMobile", isMobile, slide, videoHeight,videoWidth,screenWidth)
   const height = isMobile
     ? slide
       ? ((videoHeight * screenWidth) / videoWidth) * 0.5
@@ -405,14 +405,21 @@ const Index = ({
               propsPause={hanldlePause}
               fluid={fluid}
               src={videoUrl}
-              height={!isMobile && grid24 == "0" ? 421 : height}
+              height={height}
+              // height={!isMobile && grid24 == "0" ? 421 : height}
               // poster={videoUrl && BASE_IMG + videoThumb}
               product={data}
             />
           </div>
         ) : (
           <div className="card-home-image">
+            <Link
+            href={`/details/${slug_Name
+              ?.replace("%", "")
+              .replace("/", "")}/${id}/${feature_Id}`}
+          >
             <img src={BASE_IMG + mainImage} alt="background" className={isMobile ? "card_home_img_mobile" : "card_home_img_pc"}/>
+          </Link>
           </div>
         )}
         <div className={`card-home__price__block container`}>
@@ -490,7 +497,7 @@ const Index = ({
           )}
         </div>
         <div className={`card-home__action btn-flex px-2 `}>
-          {/* <Button
+          <Button
           onClick={addWishList}
           variant="warning"
           disabled={action === "wish"}
@@ -505,7 +512,7 @@ const Index = ({
             />
           )}
           <span>{t('Add To Wishlist')}</span>
-        </Button>  */}
+        </Button> 
           {showWishList()}
           <ButtonAddCart data={data} />
           <Button
@@ -551,13 +558,13 @@ const Index = ({
               <i className="fal fa-comments"></i>
               {t("Comment")}
             </Button>
-            <Button onClick={showSharePanel} variant="white">
+            <Button onClick={() => setShowShare(true)} variant="white">
               <ShareIcon isShared={isShared} />
               {t("Share")}
             </Button>
           </div>
         </div>
-        <SharePanel data={data} show={showShare} setShow={showSharePanel} />
+        <SharePanel data={data} show={showShare} onHide={() => setShowShare(false)} />
       </div>
       <Collapse in={open} style={{ backgroundColor: "white" }}>
         <div id="example-collapse-text">

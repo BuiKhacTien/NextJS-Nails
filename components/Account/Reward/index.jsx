@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import HERO from "../../../assets/images/desktop_referral_image.jpg";
 import { Button } from "react-bootstrap";
 import Discount from "../Discount";
 import { useTranslation } from 'react-i18next'
