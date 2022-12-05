@@ -1,11 +1,11 @@
 
 //server
-export const BASE_API = "https://nailsbeautysupply.com/"
+export const BASE_API = "https://api.nailsbeautysupply.com/"
 // export const BASE_API = "https://178.63.64.96:8912/"
 
-// export const BASE_API = "https://skynailsupply.com/"
+// export const BASE_API = "https://api.skynailsupply.com/"
 
-export const WEBSOCKET = "https://nailsbeautysupply.com/signalr";
+export const WEBSOCKET = "https://api.nailsbeautysupply.com/signalr";
 // export const WEBSOCKET = "https://178.63.64.96:8912/signalr";
 // export const WEBSOCKET = "http://45.119.82.18:5001/signalr";
 export const BASE_IMG = 'https://nailssolutions.blob.core.windows.net/images/'

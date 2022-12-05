@@ -1,11 +1,13 @@
 import React, { useRef, useEffect } from "react";
+import dynamic from "next/dynamic";
+
+import SharePanel from "./SharePanel";
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import VideoInView from "../VideoInView";
 import StarsRate from "../StarsRate";
-import SharePanel from "./SharePanel";
 import cartApi from "../../../api/cartApi";
 import { nextStepCheckout } from "../../../store/app/appActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -100,7 +102,7 @@ const Index = ({
   const { screenWidth, isMobile, comment } = useSelector((state) => state.app);
   const { isLogin } = useSelector((state) => state.user);
   const { productCartModels } = cart;
-  const router =  useRouter();
+  const router = useRouter();
 
   const paramsCart = () => {
     const indexInCart = productCartModels.findIndex(
@@ -190,6 +192,10 @@ const Index = ({
     });
   };
   const addWishList = () => {
+    if (!isLogin) {
+      setAction("");
+      return router.push("/login-register");
+    }
     setAction("wish");
     cartApi
       .addWishList(id, feature_Id)
@@ -198,12 +204,7 @@ const Index = ({
         getNumWishList();
         setAction("");
       })
-      .catch((e) => {
-        if (e.status && e.status === 401) {
-          router.push("/register-login/form1");
-        }
-        setAction("");
-      });
+
   };
   const onShare = () => {
     const url = `https://nailsbeautysupply.com/details/${slug_Name
@@ -241,12 +242,12 @@ const Index = ({
     }
   };
   // const refs = useRef();
-  const onPlay = () => {};
+  const onPlay = () => { };
   const onPause = () => {
     const video = document.getElementsByTagName("video");
   };
   const onLike = () => {
-    if (!isLogin) return router.push("/register-login/form1");
+    if (!isLogin) return router.push("/login-register");
     productApi.like(id, feature_Id).then((res) => {
       if (res) {
         console.log(res);
@@ -311,12 +312,13 @@ const Index = ({
       dispatch({ type: "app/clearComment" });
     }
   }, [comment]);
-  console.log("isMobile", isMobile, slide, videoHeight,videoWidth,screenWidth)
+  
   const height = isMobile
     ? slide
       ? ((videoHeight * screenWidth) / videoWidth) * 0.5
       : (videoHeight * screenWidth) / videoWidth
     : 200;
+
   const reachGroupSale =
     Number(group_Sale_Qty) - Number(group_Sale_Solded) <= 0;
   const { oldPrice, newPrice, savePrice } = getPrice(
@@ -414,12 +416,12 @@ const Index = ({
         ) : (
           <div className="card-home-image">
             <Link
-            href={`/details/${slug_Name
-              ?.replace("%", "")
-              .replace("/", "")}/${id}/${feature_Id}`}
-          >
-            <img src={BASE_IMG + mainImage} alt="background" className={isMobile ? "card_home_img_mobile" : "card_home_img_pc"}/>
-          </Link>
+              href={`/details/${slug_Name
+                ?.replace("%", "")
+                .replace("/", "")}/${id}/${feature_Id}`}
+            >
+              <img src={BASE_IMG + mainImage} alt="background" className={isMobile ? "card_home_img_mobile" : "card_home_img_pc"} />
+            </Link>
           </div>
         )}
         <div className={`card-home__price__block container`}>
@@ -498,22 +500,22 @@ const Index = ({
         </div>
         <div className={`card-home__action btn-flex px-2 `}>
           <Button
-          onClick={addWishList}
-          variant="warning"
-          disabled={action === "wish"}
-        >
-          {action === "wish" && (
-            <Spinner
-              as="span"
-              animation="border"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />
-          )}
-          <span>{t('Add To Wishlist')}</span>
-        </Button> 
-          {showWishList()}
+            onClick={addWishList}
+            variant="warning"
+            disabled={action === "wish"}
+          >
+            {action === "wish" && (
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+            )}
+            <span>{t('Add To Wishlist')}</span>
+          </Button>
+          {/* {showWishList()} */}
           <ButtonAddCart data={data} />
           <Button
             onClick={buyNow}

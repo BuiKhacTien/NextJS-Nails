@@ -37,7 +37,7 @@ const myAccount = [
    },
    {
       name: "Sign Out",
-      slug_Name: "register-login/form1",
+      slug_Name: "login-register",
    },
 
 
@@ -45,7 +45,7 @@ const myAccount = [
 const notLogin = [
    {
       name: "Sign in",
-      slug_Name: "register-login/form1",
+      slug_Name: "login-register",
    },
 ]
 

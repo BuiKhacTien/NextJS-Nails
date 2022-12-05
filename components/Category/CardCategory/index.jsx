@@ -26,14 +26,18 @@ const Index = ({ data, to }) => {
   return (
     <div className="card-category position_relative">
       {mediaType === "img" ? (
-        <img src={BASE_IMG + mainImage} alt="background" />
+        <Link href={to}>
+          <img src={BASE_IMG + mainImage} alt="background" className="card_category_img" />
+        </Link>
       ) : (
         <div className="card-category-video">
           <VideoInView fluid={isMobile} src={videoUrl} height={height} />
         </div>
       )}
       <div className="card-category__content">
-        <p className="card-category__title">{name}</p>
+        <Link href={to}>
+          <p className="card-category__title">{name}</p>
+        </Link>
         <p className="card-category__text">{decodeURIComponent(description)}</p>
       </div>
       <div className="position_absolute">

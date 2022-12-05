@@ -15,13 +15,10 @@ export default function Index() {
   const dispatch = useDispatch();
   const router = useRouter();
   const { slug } = router.query;
-  console.log(searchResult)
-  console.log({slug});
 
   useEffect(() => {
     if(slug) {
       if (slug) {
-        console.log("call search", slug[0]);
         const paramsSearch = {
           pageIndex: 1,
           pageSize:  "100000",

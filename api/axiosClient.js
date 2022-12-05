@@ -34,7 +34,7 @@ axiosClient.interceptors.response.use(
       // that falls out of the range of 2xx
       if (error.response.status === 401) {
         localStorage.clear();
-        //window.location.href = `${BASE_API}register-login/form1`
+        //window.location.href = `${BASE_API}login-register`
         window.location.reload();
       }
       if (error.response.data) {

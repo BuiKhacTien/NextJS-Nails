@@ -11,6 +11,7 @@ const SidebarList = ({ title = "", rows = [], to = "", close }) => {
   const handleClick = (v) => {
     if (v.name === "Sign Out") {
       dispatch({ type: "user/logout" });
+      return router.push(`/${v.slug_Name}`);
     }
     if (v.slug_Name === "group-sale") {
       return router.push(`/${v.slug_Name}`);

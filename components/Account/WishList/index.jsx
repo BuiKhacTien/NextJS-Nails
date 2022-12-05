@@ -15,7 +15,6 @@ const Index = () => {
    }
    const dispatch = useDispatch()
    const { categories } = useSelector(state => state.product)
-   console.log({categories});
    useEffect(() => {
       getWishList()
    }, [])

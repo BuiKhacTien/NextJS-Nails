@@ -443,7 +443,7 @@ a {
      font-size: 23px;
      border: 1px solid white;
      border-radius: 3px;
-     margin: 20px 10px 0 10px;
+     margin: 10px;
      align-self: baseline;
      width: 35px;
      height: 35px;
@@ -829,6 +829,7 @@ input[type=number] {
   width: auto;
   max-width: 100%;
   height: 200px;
+  cursor: pointer;
 }
 .card_home_img_mobile {
   width: 100%;
@@ -1372,6 +1373,8 @@ input[type=number] {
 .share_panel_item {
   margin: 10px;
 }
+
+
 .share_panel_item_icon {
   font-size: 40px;
   display: block;
@@ -1379,7 +1382,14 @@ input[type=number] {
   margin-right: auto;
   cursor: pointer;
   color: rgb(71, 71, 71);
-  transition: all ease-in-out 500ms;
+}
+.share_panel_item_icon:hover {
+  font-size: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  color: rgb(0, 123, 157);
 }
 .share_panel_item_facebook {
   display: flex;
@@ -1564,6 +1574,9 @@ label.star:before {
 .detail-send__comment{
   display: flex;
   align-items: center;
+}
+.detail_send_comment_input {
+  color: rgb(0, 0, 0) !important;
 }
 .detail-send__comment img {
   width: 20px;
@@ -2206,13 +2219,18 @@ https://flickity.metafizzy.co
   height: 100%;
 }
 
+.test_img {
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .home-page>div {
     padding: 0;
   }
 
   .slider__cell {
-    margin-right: 1rem;
+    margin-right: 1rem !important;
+    padding: 10px;
   }
 
   .home-page__slider {
@@ -2222,7 +2240,7 @@ https://flickity.metafizzy.co
 
 @media (min-width: 768px) {
   .home-page {
-    padding-top: 35rem;
+    padding-top: 27vw;
   }
 
   .home-page__slider {
@@ -2265,7 +2283,9 @@ https://flickity.metafizzy.co
   right: 10px;
 }
 
-
+.slider_product_resposive_arrow {
+  display: none !important;
+}
 /**  inputpassword*/
 .form__password {
   position: relative;
@@ -3724,6 +3744,9 @@ font-size: 1.8em;
   background-color: #fff;
   min-height: 450px;
 }
+.card_category_img {
+  cursor: pointer;
+}
 .card-category-video {
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
 }
@@ -3740,6 +3763,7 @@ font-size: 1.8em;
   color: "#6004ba";
   font-size: 1.5rem;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .card-category__text {
@@ -3747,7 +3771,7 @@ font-size: 1.8em;
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .card-category {
      padding: 0;
      margin: 0 0 20px;
@@ -3765,11 +3789,103 @@ font-size: 1.8em;
   }
 }
 
+.shipping_charges_container {
+  padding: 15px;
+  background-color: aliceblue;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.shipping_charges_title {
+  text-align: center;
+  font-weight: 700;
+}
+
+.shipping_policies_text p {
+  font-size: 15px;
+}
+
+@media screen and (min-width: 768px) {
+
+.shipping_charges_container {
+  padding: 40px;
+  display: block;
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: aliceblue;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+}
+/**  */
+.returning_container {
+    max-width: 768px;
+    background-color:aliceblue;
+    padding: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    text-align: justify;
+}
+
+.returning_title {
+    text-align: center;
+    font-weight: 700;
+}
+.return_list {
+    /* list-style-type: circle; */
+}
+
+
+.product_should_be {
+    list-style-type: circle;
+}
+
+.address_return p{
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .returning_container {
+    padding: 15px;
+}
+}
+
 
 /**  */
 
 
-/**  */
+.policies_title {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.shipping_charges_box {
+  margin-top: 10px;
+  cursor: pointer;
+  color: black;
+}
+.shipping_charges_box a {
+  text-decoration: none;
+}
+
+
+.return_item_box {
+  color: black;
+  cursor: pointer;
+}
+.return_item_box a {
+  text-decoration: none;
+}
+
+.policies_text {
+  color: black;
+  font-size: 15px;
+  margin: 0 20px;
+}
+.policies_text:hover {
+  color: rgb(26, 0, 141);
+}
 
 /**  */
 

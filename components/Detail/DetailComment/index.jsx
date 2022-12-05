@@ -95,6 +95,7 @@ const Index = ({ data, name = "detail__review-stars" }) => {
       </div>
       <form onSubmit={onSubmit} className="detail-send__comment">
         <input
+          className="detail_send_comment_input"
           placeholder={`${t("Comment")}...`}
           type="text"
           value={content}

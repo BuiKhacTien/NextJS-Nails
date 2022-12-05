@@ -146,7 +146,7 @@ const Index = ({ data = {}, onSelected }) => {
       <h1>{fullName}</h1>
       <div className="detail_feature_share_facebook">
         <FacebookShareButton
-          url={`http://178.63.64.96:8913${router ? router.asPath : ""}`}
+          url={`https://nailsbeautysupply.com${router ? router.asPath : ""}`}
           // quote={'next-share is a social share buttons for your next React apps.'}
           hashtag={'#nail #nailsupply #nailbeautysupply #beautysupply #lashessupply #acrylic #dippowder'}
         >

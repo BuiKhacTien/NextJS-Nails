@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Modal from "react-bootstrap/Modal";
 import { BASE_API, BASE_IMG } from "../../../constants/appSetting";
 import productApi from "../../../api/productApi";
-import { showSuccess } from "../../../utils/app";
+import { showSuccess, } from "../../../utils/app";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -15,12 +15,12 @@ const GMAIL = require("../../../assets/images/gmail.png");
 
 const SharePanel = (props) => {
   const { slug_Name, feature_Id, id, mainImage, fullName, description } = props.data;
-  const url = `http://178.63.64.96:8913/details/${slug_Name
+  const url = `https://nailsbeautysupply.com/details/${slug_Name
     .replace("/", "")
     .replace("%", "")}/${id}/${feature_Id}`;
 
   const handleClickCopy = () => {
-    window.navigator.clipboard.writeText(url);
+    navigator.clipboard.writeText(url);
     showSuccess("Copy product success");
   };
 
@@ -69,7 +69,7 @@ const SharePanel = (props) => {
               <VscCopy className="share_panel_item_icon" />
             </div>
             <div className="share_panel_item_text">
-              Copy
+              Copy Link
             </div>
           </div>
           <div className="share_panel_item">

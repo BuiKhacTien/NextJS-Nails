@@ -181,33 +181,14 @@ export default function Home() {
     }
   }, [inView]);
 
-  let section1 = [];
-  section1 = listHome[0] ? listHome[0].products : [];
-
-  const mockBackground = [
-    {
-      url: "https://laz-img-cdn.alicdn.com/images/ims-web/TB1hk2jylr0gK0jSZFnXXbRRXXa.jpg_2200x2200Q100.jpg_.webp",
-    },
-    {
-      url: "https://laz-img-cdn.alicdn.com/images/ims-web/TB1d66Eybj1gK0jSZFuXXcrHpXa.jpg_2200x2200Q100.jpg_.webp",
-    },
-    {
-      url: "https://laz-img-cdn.alicdn.com/images/ims-web/TB1PNOpylr0gK0jSZFnXXbRRXXa.jpg_2200x2200Q100.jpg_.webp",
-    },
-  ];
-  const flickityOptions = {
-    // cellAlign: "left",
-    prevNextButtons: false,
-    pageDots: false,
-  };
   const typeCard = isMobile ? "secondary" : "primary";
   const listResponsive = listHome.slice(0, numItem);
   function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
+    const { classname, style, onClick } = props;
     return (
       <div
-        className="slider_home_nextArrow"
-        style={{ ...style, display: "block" }}
+        className={classname}
+        style={{ ...style }}
         onClick={onClick}
       >
         <GrNext />
@@ -215,11 +196,11 @@ export default function Home() {
     );
   }
   function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
+    const { classname, style, onClick } = props;
     return (
       <div
-        className="slider_home_prevArrow"
-        style={{ ...style, display: "block" }}
+        className={classname}
+        style={{ ...style }}
         onClick={onClick}
       >
         <GrPrevious />
@@ -232,17 +213,21 @@ export default function Home() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    nextArrow: <SampleNextArrow classname="slider_home_nextArrow"/>,
+    prevArrow: <SamplePrevArrow classname="slider_home_prevArrow"/>,
   };
   const settings = {
-    className: "slider variable-width",
     dots: false,
     infinite: false,
-    centerMode: true,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // variableWidth: true
+    centerMode: true,
+    centerPadding: "30px",
+    nextArrow: <SampleNextArrow classname="slider_product_resposive_arrow"/>,
+    prevArrow: <SamplePrevArrow classname="slider_product_resposive_arrow"/>,
   };
   const superTopSales = listHome.find(
     (item) => item.slug_Name === "Super-Sale"
@@ -588,13 +573,15 @@ export default function Home() {
                     {newProduct.slice(4, 14).length > 0 && isMobile && (
                       <Slider {...settings}>
                         {newProduct.slice(4, 14).map((v, k) => (
-                          <FlickityCell
-                            name={`list-${i}-${v.id}-${k}`}
-                            key={`list-${i}-${v.id}-${k}`}
-                            isMobile={isMobile}
-                            item={v}
-                            numItem={numItem}
-                          />
+                          <div className="slider__cell" key={`list-${i}-${v.id}-${k}`}>
+                            <CardHome
+                              fluid={isMobile}
+                              slide={true}
+                              name={`list-${i}-${v.id}-${k}`}
+                              data={v}
+                              numItem={numItem}
+                            />
+                        </div>
                         ))}
                       </Slider>
                     )}
@@ -625,16 +612,3 @@ export default function Home() {
   );
 }
 
-const FlickityCell = ({ item, isMobile, name, numItem }) => {
-  return (
-    <div className="slider__cell">
-      <CardHome
-        fluid={isMobile}
-        slide={true}
-        name={name}
-        data={item}
-        numItem={numItem}
-      />
-    </div>
-  );
-};

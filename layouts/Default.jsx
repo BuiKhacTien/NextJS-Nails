@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useLayoutEffect, useState, useEffect }from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import TheHeader from "../components/TheHeader";
 import TheFooter from "../components/TheFooter";
@@ -12,6 +12,19 @@ const Default = ({ children }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  function handleResize() {
+    dispatch({ type: "app/setMobile", payload: window.innerWidth})
+  }
+
+  
   return (
     <div className="layout_default">
       <TheHeader />
@@ -26,3 +39,4 @@ const Default = ({ children }) => {
 };
 
 export default Default;
+

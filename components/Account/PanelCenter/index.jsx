@@ -19,7 +19,6 @@ const Index = () => {
    const [openUpload, setOpenUpload] = React.useState(false)
    const [loading, setLoading] = React.useState(false)
    const { user } = useSelector(state => state.user)
-   console.log({user});
    const dispatch = useDispatch()
    React.useEffect(() => {
       getUser()

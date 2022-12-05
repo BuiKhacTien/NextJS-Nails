@@ -12,7 +12,6 @@ function NavItem({ name, to }) {
   const {t} = useTranslation()
   const router = useRouter();
   const asPath = router.asPath;
-  console.log(router)
   const checkActive = (asPath) => {
     return asPath === `/my-account/${to}`;
   };

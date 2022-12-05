@@ -145,6 +145,17 @@ const Index = () => {
 								*/}
               </div>
               <FooterActions />
+              <div className="policies_title">Shipping & Returns</div>
+              <div className="shipping_charges_box">
+                <Link href="/shipping">
+                  <p className="policies_text">Shipping</p>
+                </Link>
+              </div>
+              <div className="return_item_box">
+                <Link href="/return">
+                  <p className="policies_text">Return</p>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

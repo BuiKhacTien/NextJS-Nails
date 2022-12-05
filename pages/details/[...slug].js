@@ -96,7 +96,7 @@ export async function getServerSideProps(context) {
   let ogfullName = "";
   let ogdescription = "";
   if (res) {
-    URL = "http://178.63.64.96:8897" + resolvedUrl
+    URL = "https://nailsbeautysupply.com" + resolvedUrl
     ogmainImage = BASE_IMG + res.mainImage
     ogfullName = res.fullName
     ogdescription = res.description.replace(/%20/g, " ").replace(/%2C/g, ", ");

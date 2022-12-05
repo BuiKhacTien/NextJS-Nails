@@ -16,7 +16,6 @@ export default function Index() {
     const [showFilter, setShowFilter] = useState(false);
     const router = useRouter();
     const slug = router.query.slug
-    console.log(slug)
     const dispatch = useDispatch();
     const { categories } = useSelector((state) => state.product);
     const { menu, isMobile } = useSelector((state) => state.app);
