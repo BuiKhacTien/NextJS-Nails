@@ -89,15 +89,26 @@ const LayoutReposive = ({ isMobile = false, children }) => {
 export async function getServerSideProps(context) {
   const { resolvedUrl, query } = context
   const id = query.slug[1]
-  const featureId =  typeof(query.slug[2]) !== String ? '0' : query.slug[2]
+  // const featureId =  typeof(query.slug[2]) !== String ? '0' : query.slug[2]
+  const featureId =  query.slug[2]
   const res = await productApi.info(id, featureId);
+  // console.log(featureId)
   let URL = "";
   let ogmainImage = "";
   let ogfullName = "";
   let ogdescription = "";
   if (res) {
+    // ogmainImage = BASE_IMG + res.mainImage
+    const productGalleryItem = res.productColorSize.find((value) => {
+      return value.feature_Id == featureId
+    })
+    if (productGalleryItem) {
+      ogmainImage = productGalleryItem.imageUrl ? BASE_IMG + productGalleryItem.imageUrl : BASE_IMG + res.mainImage
+    } else {
+      ogmainImage = BASE_IMG + res.mainImage
+    }
+    // console.log(ogmainImage)
     URL = "https://nailsbeautysupply.com" + resolvedUrl
-    ogmainImage = BASE_IMG + res.mainImage
     ogfullName = res.fullName
     ogdescription = res.description.replace(/%20/g, " ").replace(/%2C/g, ", ");
     // ogdescription = res.details.replace(/%20/g, " ");
@@ -292,8 +303,9 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
   return (
     <>
       <Head>
-        <title>Details</title>
+        <title>{ogfullName}</title>
         <meta name="description" content={ogdescription} />
+        <meta property="fb:app_id" content="729577734340382" />
         <meta property="og:url" content={URL} />
         <meta property="og:image" content={ogmainImage} />
         <meta property="og:image:width" content="1200" />

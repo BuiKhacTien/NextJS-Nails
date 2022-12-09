@@ -132,11 +132,11 @@ const Index = ({ data = {} }) => {
   };
   const handleClickProductPrequent = (v) => {
     if (v.slug_Name) {
-      router.push(`/details/${v.slug_Name.replace('%', '').replace("/", "")}/${v.id}/${v.feature_Id}`);
+      router.push(`/details/${v.slug_Name.replace('%', '').replace("/", "").replace("+", "").replace("+", "")}/${v.id}/${v.feature_Id}`);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       const slug_Name = v.name.trim().toLowerCase().replace(/ /g, '-')
-      router.push(`/details/${slug_Name.replace('%', '').replace("/", "")}/${v.id}/${v.feature_Id}`);
+      router.push(`/details/${slug_Name.replace('%', '').replace("/", "").replace("+", "").replace("+", "")}/${v.id}/${v.feature_Id}`);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }

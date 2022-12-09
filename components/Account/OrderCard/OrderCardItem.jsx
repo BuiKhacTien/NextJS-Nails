@@ -22,7 +22,7 @@ const OrderCardItem = ({
 }) => {
   const router = useRouter();
   const handleRoute = () => {
-    router.push(`/details/${slug_name.replace('%', '').replace("/", "")}/${itemId}/${feature_Id}`);
+    router.push(`/details/${slug_name.replace('%', '').replace("/", "").replace("+", "")}/${itemId}/${feature_Id}`);
   };
   const {t}= useTranslation();
   const dispatch = useDispatch();
@@ -72,7 +72,7 @@ const OrderCardItem = ({
       </div>
       <div className="card_item_2">
         <div className="orders__card__content">
-          <Link href={`/details/${slug_name.replace('%', '').replace("/", "")}/${itemId}/${feature_Id}`}>
+          <Link href={`/details/${slug_name.replace('%', '').replace("/", "").replace("+", "")}/${itemId}/${feature_Id}`}>
             <p className="orders__card__name">
               {itemName}
               {sizeName && ` - ${sizeName}`}

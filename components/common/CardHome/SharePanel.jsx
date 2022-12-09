@@ -16,8 +16,7 @@ const GMAIL = require("../../../assets/images/gmail.png");
 const SharePanel = (props) => {
   const { slug_Name, feature_Id, id, mainImage, fullName, description } = props.data;
   const url = `https://nailsbeautysupply.com/details/${slug_Name
-    .replace("/", "")
-    .replace("%", "")}/${id}/${feature_Id}`;
+    .replace("/", "").replace("%", "").replace("+", "")}/${id}/${feature_Id}`;
 
   const handleClickCopy = () => {
     navigator.clipboard.writeText(url);

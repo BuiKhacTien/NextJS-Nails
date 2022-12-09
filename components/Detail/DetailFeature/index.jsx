@@ -89,8 +89,7 @@ const Index = ({ data = {}, onSelected }) => {
     const { product_Id, feature_Id } = item;
     router.push(
       `/details/${slug_Name
-        .replace("%", "")
-        .replace("/", "")}/${product_Id}/${feature_Id}`,
+        .replace("%", "").replace("/", "").replace("+", "")}/${product_Id}/${feature_Id}`,
       undefined,
       { shallow: true }
     );

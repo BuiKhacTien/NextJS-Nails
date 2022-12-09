@@ -261,8 +261,9 @@ export default function Home() {
         <title>Nailsbeautysupply.com</title>
         <meta name="image" content="" />
         <meta name="description" content="Home Page Description" />
-        <meta property="og:image" content="../public/favicon.png" />
-        <meta property="og:title" content="Home Page Title" />
+        <meta property="og:image" content="" />
+        <meta property="fb:app_id" content="729577734340382" />
+        <meta property="og:title" content="NailsBeautySupply" />
         <meta property="og:description" content="Home Page Description" />
         <meta property="og:type" content="website" />
       </Head>
@@ -547,7 +548,7 @@ export default function Home() {
                     {newProduct.length > 0 && (
                       <p className="title-category__home">
                         <span>{t(item.name.toUpperCase())}</span>
-                        <Link href={`/${to}/${slug_Name.replace("/", "")}`}>
+                        <Link href={`/${to}/${slug_Name.replace("%", "").replace("/", "").replace("+", "")}`}>
                           <span>{t("View All")}</span>
                         </Link>
                       </p>
