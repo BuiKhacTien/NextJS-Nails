@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import dynamic from "next/dynamic";
+import { useSelector } from "react-redux";
 
 const PanelLeft = dynamic(
   () => import("../../../components/Account/PanelLeft"),
@@ -43,10 +44,47 @@ const Communication = dynamic(
   }
 );
 
+const routes = [
+  {
+     name: Profile,
+     path: 'account',
+  },
+  {
+     name: Address,
+     path: 'address',
+  },
+  {
+     name: YourOrders,
+     path: 'your-order',
+  },
+  {
+     name: Discount,
+     path: 'discount-code',
+  },
+  {
+     name: Reward,
+     path: 'reward',
+  },
+  {
+     name: Payment,
+     path: 'payment',
+  },
+  {
+     name: Communication,
+     path: 'communication-preferences',
+  },
+]
+
 export default function Index({}) {
   const router = useRouter();
   const slug = router.query.slug;
-  // const accessToken = localStorage.getItem("accessToken");
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      router.push("/login-register")
+    }
+  }, []);
 
   return (
     <main className="account-page">
@@ -59,14 +97,23 @@ export default function Index({}) {
             <PanelLeft />
           </div>
           <div className="col-md-9">
-            {slug === "account" && <Profile />}
+            {
+              routes.map((value, index) => {
+                return slug === value.path && (
+                  <div key={index+"account"}>
+                    <Profile/>
+                  </div>
+                )
+              })
+            }
+            {/* {slug === "account" && <Profile />}
             {slug === "address" && <Address />}
             {slug === "your-order" && <YourOrders />}
             {slug === "wish-list" && <WishList />}
             {slug === "discount-code" && <Discount />}
             {slug === "reward" && <Reward />}
             {slug === "payment" && <Payment />}
-            {slug === "communication-preferences" && <Communication />}
+            {slug === "communication-preferences" && <Communication />} */}
           </div>
         </div>
       </div>

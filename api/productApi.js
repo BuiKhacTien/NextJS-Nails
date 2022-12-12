@@ -80,8 +80,13 @@ const productApi = {
     return axiosClient.get(url);
   },
   getComment: (id, featureId) => {
-    const url = `api/Product/${id}/comments?feature_id=${featureId}`;
-    return axiosClient.get(url);
+    if(featureId == 0) {
+      const url = `api/Product/${id}/comments`;
+      return axiosClient.get(url);
+    } else {
+      const url = `api/Product/${id}/comments?feature_id=${featureId}`;
+      return axiosClient.get(url);
+    }
   },
   addComment: (params) => {
     const url = `api/Product/comment`;

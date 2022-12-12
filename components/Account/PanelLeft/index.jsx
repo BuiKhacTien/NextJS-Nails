@@ -37,6 +37,10 @@ const Index = () => {
       to: "your-order",
     },
     {
+      name: "Discount Code",
+      to: "discount-code",
+    },
+    {
       name: "Reward",
       to: "reward",
     },

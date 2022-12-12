@@ -264,6 +264,7 @@ const Index = ({
       .getComment(id, featureId)
       .then((res) => {
         if (res) {
+          console.log("comment:", res)
           setComments(res);
           setLoading(false);
         }
