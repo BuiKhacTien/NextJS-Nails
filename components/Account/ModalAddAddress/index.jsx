@@ -6,7 +6,9 @@ import PanelResidential from "./PanelResidential";
 import PanelBusiness from "./PanelBusiness";
 import { useSelector } from "react-redux";
 import userApi from "../../../api/userApi";
-import { useTranslation } from 'react-i18next'
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 const defaultParams = {
   address: "", address2: "", city: "", company: "", country: "", is_Default: "", zip_Code: ""

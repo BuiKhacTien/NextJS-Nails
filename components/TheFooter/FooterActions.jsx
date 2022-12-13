@@ -4,7 +4,17 @@ import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import appApi from '../../api/appApi'
 import { showSuccess } from '../../utils/app'
-import { useTranslation } from 'react-i18next'
+//
+
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+   return {
+     props: {
+       ... (await serverSideTranslations(locale, ['translation'])),
+     },
+   }
+ }
+
 const FooterActions = () => {
    const {t} = useTranslation()
    const [email, setEmail] = React.useState('')

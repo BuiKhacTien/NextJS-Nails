@@ -7,10 +7,12 @@ import { useRouter } from "next/router";
 
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Tabs from "react-bootstrap/Tabs";
-import { useTranslation } from 'react-i18next'
+//
+
 import Tab from "react-bootstrap/Tab";
 import cookies from 'js-cookie'
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 // components
 import DetailMedia from "../../components/Detail/DetailMedia";
 import DetailFeature from "../../components/Detail/DetailFeature";

@@ -4,7 +4,9 @@ import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { BASE_IMG } from "../../../constants/appSetting";
 import ButtonQtyCart from "../ButtonQtyCart";
-import {useTranslation} from 'react-i18next'
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 const CartItem = ({ item, deleteItem, updateItem }) => {
   const {t} = useTranslation()

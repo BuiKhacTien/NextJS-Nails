@@ -23,6 +23,9 @@ const ButtonChangeLanguage = (props) => {
   //   router.push({ pathname, query }, asPath, { locale: newLocale });
   // };
 
+  const handleChangeLanguage = () => {
+    console.log("change language")
+  }
   return (
     <React.Fragment>
       <NavDropdown
@@ -32,7 +35,7 @@ const ButtonChangeLanguage = (props) => {
       >
         {props.dataLanguages.map(({ code, name, country_code }) => (
           <NavDropdown.Item
-            onClick={() => i18next.changeLanguage(code)}
+            onClick={handleChangeLanguage}
             key={country_code}
           >
             <div style={{ paddingTop: 10, paddingBottom: 10 }}>{name}</div>

@@ -1,10 +1,20 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
-import { useTranslation } from 'react-i18next'
+//
+
 import { useDispatch, useSelector } from 'react-redux'
 import cartApi from '../../../api/cartApi'
 import { formCart, CART_ID } from '../../../constants/appSetting'
 import { getShippingFee } from '../../../store/cart/actions'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+   return {
+     props: {
+       ... (await serverSideTranslations(locale, ['translation'])),
+     },
+   }
+ }
+
 const Index = ({ data }) => {
    const { cart, loading } = useSelector(state => state.cart)
    const {t} = useTranslation()

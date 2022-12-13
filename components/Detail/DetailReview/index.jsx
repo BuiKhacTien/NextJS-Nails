@@ -1,6 +1,9 @@
 import React from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import { useTranslation } from "react-i18next";
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const Index = ({ data = {} }) => {
   const [total, setTotal] = React.useState(
       data.numOf1Star +

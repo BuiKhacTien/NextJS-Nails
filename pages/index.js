@@ -23,10 +23,12 @@ import productApi from "../api/productApi";
 import { LAST_VIEW } from "../constants/appSetting";
 import Slider from "react-slick";
 import Link from "next/link";
-import { useTranslation } from "react-i18next";
-import { GrPrevious, GrNext } from "react-icons/gr";
 //
 
+import { GrPrevious, GrNext } from "react-icons/gr";
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 export default function Home() {
   const [background, setBackground] = useState([]);
   const {

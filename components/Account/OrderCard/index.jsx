@@ -3,7 +3,16 @@ import Link  from "next/link";
 import moment from 'moment'
 import OrderCardItem from "./OrderCardItem";
 import { DATE_TIME_FORMAT } from "../../../constants/appSetting";
-import { useTranslation } from "react-i18next";
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+   return {
+     props: {
+       ... (await serverSideTranslations(locale, ['translation'])),
+     },
+   }
+ }
+
 const Index = ({ orderDate = "", orderTotal = 0, items = [], orderId = 0, name = "" }) => {
    const {t} = useTranslation()
    return (

@@ -8,9 +8,10 @@ import FooterActions from "./FooterActions";
 import FooterContact from "./FooterContact";
 import FooterList from "./FooterList";
 import FooterTop from "./FooterTop";
-import { useTranslation } from 'react-i18next'
+//
 
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 const Index = () => {
   const { t } = useTranslation();

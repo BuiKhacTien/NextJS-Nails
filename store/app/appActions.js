@@ -1,7 +1,7 @@
 
 const pathCheckout = {
   CHECKOUT_LOGIN: "/form-checkout/address-default",
-  CHECKOUT_NOT_LOGIN: "/checkout",
+  CHECKOUT_NOT_LOGIN: "/check-out-guest",
   PAYMENT: "/form-checkout/payment/card",
   ORDERS: "/my-account/your-order",
   CART: "/cart",

@@ -5,12 +5,16 @@ import productApi from "../../../api/productApi";
 import { showSuccess } from "../../../utils/app";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_IMG } from "../../../constants/appSetting";
-import { useTranslation } from "react-i18next";
+//
+
 import { addInfoComments } from "../../../store/user/userActions";
 import dynamic from 'next/dynamic';
 import { useRouter } from "next/router";
 
 const SEND = require("../../../assets/images/send.png");
+
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 const InputImage = ({ onChange, value }) => {
   const Dropzone = dynamic(() => import('react-drop-zone'), { ssr: false });

@@ -1,7 +1,9 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+//
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/router'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 const SidebarList = ({ title = "", rows = [], to = "", close }) => {
   const [newRows, setNewRows] = React.useState([rows]);

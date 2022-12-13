@@ -14,7 +14,11 @@ import { CART_ID, ORDER_ID } from "../../../constants/appSetting";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { Spinner } from "react-bootstrap";
-import { useTranslation } from 'react-i18next'
+
+//
+
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 const Index = () => {
   const { t } = useTranslation()
   const [code, setCode] = useState("");

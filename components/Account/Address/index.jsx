@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-import { useTranslation, Trans } from 'next-i18next'
+//
 import { useSelector } from "react-redux";
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -9,12 +9,13 @@ import userApi from "../../../api/userApi";
 import { ORDER_ID } from "../../../constants/appSetting";
 import ModalAddAddress from "../ModalAddAddress";
 import ModalConfirm from "../../common/ModalConfirm";
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 const Item = ({ item, setReLoad, onEdit }) => {
   const { name = "", company, address, address2, city, zip_Code, country, is_Default, id } = item;
   const [showWarning, setShowWarning] = useState(false);
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const onDefault = () => {
     userApi.defaultAddress(id).then((res) => {
       if (res && res.status === 200) {
@@ -41,7 +42,7 @@ const Item = ({ item, setReLoad, onEdit }) => {
             <p>{address2 && address2}</p>
             <p>{city && city + ","}</p>
             <p>{country && country}</p>
-            <p>{ zip_Code && " - " + zip_Code}</p>
+            <p>{zip_Code && " - " + zip_Code}</p>
           </div>
         </div>
         <div className="address__item-action">
@@ -81,7 +82,7 @@ const Item = ({ item, setReLoad, onEdit }) => {
 };
 
 const Index = () => {
-  const {t}= useTranslation()
+  const { t } = useTranslation()
   const [address, setAddress] = useState([]);
   const [show, setShow] = useState(false);
   const [reLoad, setReLoad] = useState(true);
@@ -114,7 +115,7 @@ const Index = () => {
         }
       });
     } else {
-      router.push("/checkout");
+      router.push("/check-out-guest");
     }
   };
   const handleSubmit = (show, reLoad) => {
@@ -139,7 +140,7 @@ const Index = () => {
         variant="outline-secondary"
         className="border-dark"
       >
-        + {t("Add new shipping address")} 
+        + {t("Add new shipping address")}
       </Button>
       <div>
         <div className="box-list border-top mt-3">

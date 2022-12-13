@@ -5,8 +5,12 @@ import cartApi from "../../../../api/cartApi";
 import { showCard } from "../../../../constants/constants";
 import OrderCardItem from "../../OrderCard/OrderCardItem";
 import moment from "moment";
-import { useTranslation } from "react-i18next";
+//
+
 import { DATE_TIME_FORMAT } from "../../../../constants/appSetting";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const Index = () => {
   const { t } = useTranslation();
   const [cart, setCart] = React.useState({});

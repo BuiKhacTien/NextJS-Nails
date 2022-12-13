@@ -6,7 +6,11 @@ import { useState } from "react";
 import { showError, showSuccess } from "../../../utils/app";
 import { useEffect } from "react";
 import cardApi from "../../../api/cardApi";
-import { useTranslation } from 'react-i18next'
+
+//
+
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 const dtoParams = ({
   cardNumber,
   nameOnCard,

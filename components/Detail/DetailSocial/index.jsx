@@ -4,8 +4,11 @@ import { useRouter } from "next/router";
 import appApi from "../../../api/appApi";
 import cartApi from "../../../api/cartApi";
 import { showSuccess, onShare } from "../../../utils/app";
-import { useTranslation } from "react-i18next";
+//
 import Cookies from "js-cookie"
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const Index = ({ reviews, data }) => {
   const { id, feature_Id } = data;
   const { t } = useTranslation()

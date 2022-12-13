@@ -9,7 +9,8 @@ import ButtonAddCart from "../../common/ButtonAddCart";
 import { BASE_IMG, formCart } from "../../../constants/appSetting";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
+//
+
 import { nextStepCheckout } from "../../../store/app/appActions";
 import cartApi from "../../../api/cartApi";
 import {
@@ -18,6 +19,8 @@ import {
 } from 'next-share';
 
 const DISCOUNT_IMG = require("../../../assets/images/discount.png");
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 const showDiscountPrice = (price, discountPrice, group_Sale_Price, isReach) => {
   if (group_Sale_Price && group_Sale_Price > 0) {

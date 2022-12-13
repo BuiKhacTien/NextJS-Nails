@@ -3,10 +3,12 @@ import Link from "next/link"
 import { useSelector } from "react-redux";
 import NO_AVATAR from '../../../assets/images/no-avatar.svg'
 import { BASE_IMG } from "../../../constants/appSetting";
-import { useTranslation } from "react-i18next";
+//
+
 import  Cookie from 'js-cookie'
 import { useRouter } from "next/router";
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 function NavItem({ name, to }) {
   const {t} = useTranslation()

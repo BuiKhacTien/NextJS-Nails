@@ -7,9 +7,12 @@ import Link from "next/link";
 import { showSuccess } from "../../../utils/app";
 import { getProfile, loginUser } from "../../../store/user/userActions";
 import InputPassword from "../../common/InputPassword";
-import { useTranslation } from "react-i18next";
+//
+
 import { clearInfoComments } from "../../../store/user/userActions";
 import productApi from "../../../api/productApi";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 const Index = ({ title = "Good to see you again!" }) => {
   const dispatch = useDispatch();
@@ -33,13 +36,13 @@ const Index = ({ title = "Good to see you again!" }) => {
                 showSuccess("Add comment success");
                 dispatch(clearInfoComments());
                 return router.push(linkComment);
-              } else if (pathname === "/checkout") {
+              } else if (pathname === "/check-out-guest") {
                 return router.push("/form-checkout/address-default");
               } else {
                 return router.push("/");
               }
             });
-          } else if (pathname === "/checkout") {
+          } else if (pathname === "/check-out-guest") {
             return router.push("/form-checkout/address-default");
           } else {
             return router.push("/");
@@ -75,7 +78,7 @@ const Index = ({ title = "Good to see you again!" }) => {
           {t("Sign in")}
         </Button>
         <Link href="/forgot-password" className="link-forgot">
-          <div>{t("Forgot your password")} ?</div>
+          <div className="login_forgot_password">{t("Forgot your password")} ?</div>
         </Link>
       </Form>
     </div>

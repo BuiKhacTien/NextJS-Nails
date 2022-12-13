@@ -5,7 +5,10 @@ import StarsRate from "../../common/StarsRate";
 import productApi from "../../../api/productApi";
 import { showSuccess } from "../../../utils/app";
 import { useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const Index = ({ data, onUpdate }) => {
   const [comment, setComment] = React.useState("");
 

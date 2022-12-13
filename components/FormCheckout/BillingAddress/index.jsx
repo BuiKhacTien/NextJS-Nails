@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+//
+
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
@@ -10,6 +11,8 @@ import TextField from "@mui/material/TextField";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 export default function Index() {
   const { t } = useTranslation();
@@ -76,7 +79,7 @@ export default function Index() {
         alert(t("Please complete all information"));
       }
     } else {
-      router.push("/checkout");
+      router.push("/check-out-guest");
     }
   };
   

@@ -23,9 +23,12 @@ import productApi from "../../../api/productApi";
 import CardComment from "./CardComment";
 import DetailComment from "../../Detail/DetailComment";
 import Discount from "./Discount";
-import { useTranslation } from "react-i18next";
+//
+
 import Cookies from "js-cookie";
 import { isBuffer } from "lodash";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 const LikeIcon = ({ isLiked }) => {
   if (isLiked) return <i className="fas fa-thumbs-up"></i>;

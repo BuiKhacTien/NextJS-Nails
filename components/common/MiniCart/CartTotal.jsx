@@ -6,7 +6,10 @@ import cartApi from "../../../api/cartApi";
 import { CART_ID } from "../../../constants/appSetting";
 import { getShippingFee } from "../../../store/cart/actions";
 import productApi from "../../../api/productApi";
-import { useTranslation } from 'react-i18next'
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const CartTotal = ({ responsive = false }) => {
   const { t } = useTranslation()
   const [currentTime, setCurrentTime] = React.useState(null);

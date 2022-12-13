@@ -1,9 +1,11 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
-import { useTranslation } from "react-i18next";
+//
 import Link from "next/link"
-
 import userApi from "../../../api/userApi";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const Index = () => {
   const [rewards, setRewards] = React.useState([]);
   const [loading, setLoading] = React.useState(false);

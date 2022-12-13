@@ -1,6 +1,11 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import { useTranslation } from "react-i18next"
+//
+
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
+
 const FooterTop = () => {
   const { t } = useTranslation()
   return (

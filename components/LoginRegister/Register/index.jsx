@@ -8,7 +8,10 @@ import { showError, showSuccess } from "../../../utils/app";
 import { nextStepCheckout } from "../../../store/app/appActions";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { useTranslation } from "react-i18next";
+
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 const Index = () => {
   const router = useRouter();
   const dispatch = useDispatch();

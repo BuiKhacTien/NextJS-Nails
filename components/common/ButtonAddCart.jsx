@@ -3,9 +3,13 @@ import Button from 'react-bootstrap/Button'
 import Spinner from "react-bootstrap/Spinner";
 import { useDispatch, useSelector } from 'react-redux';
 import cartApi from '../../api/cartApi';
-import { useTranslation } from 'react-i18next'
+//
+
 import { formCart } from '../../constants/appSetting';
 import { getShippingFee } from '../../store/cart/actions';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const ButtonAddCart = ({ data = {}, className = "", variant = "danger" }) => {
   const { t } = useTranslation()
   const dispatch = useDispatch();

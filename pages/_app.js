@@ -7,6 +7,8 @@ import store from "../store";
 import React from "react";
 import { SSRProvider } from '@react-aria/ssr';
 
+import { appWithTranslation } from 'next-i18next'
+
 import "../styles/globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -63,4 +65,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

@@ -3,7 +3,16 @@ import Button from 'react-bootstrap/Button'
 import userApi from '../../../../api/userApi'
 import { showError, showSuccess } from '../../../../utils/app'
 import InputPassword from '../../../common/InputPassword'
-import { useTranslation } from "react-i18next";
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+   return {
+     props: {
+       ... (await serverSideTranslations(locale, ['translation'])),
+     },
+   }
+ }
+
 const init = {
    oldPassword: "",
    password: "",

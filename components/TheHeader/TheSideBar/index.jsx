@@ -4,7 +4,16 @@ import SidebarHeader from './SidebarHeader'
 import SidebarList from './SidebarList'
 import Drawer from '../../common/Drawer'
 import { useDispatch, useSelector } from 'react-redux'
-import { useTranslation } from 'react-i18next'
+//
+
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+   return {
+     props: {
+       ... (await serverSideTranslations(locale, ['translation'])),
+     },
+   }
+ }
 
 const myAccount = [
    {

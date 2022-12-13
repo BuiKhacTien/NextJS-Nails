@@ -4,7 +4,10 @@ import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
 import userApi from "../../../../api/userApi";
 import { showError, showSuccess } from "../../../../utils/app";
-import { useTranslation } from "react-i18next";
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const EditUser = ({ open, setOpen }) => {
   const [loading, setLoading] = React.useState(false)
   const { user } = useSelector((state) => state.user);

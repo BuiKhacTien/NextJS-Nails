@@ -4,7 +4,10 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { ORDER_ID } from "../../../constants/appSetting";
 import cartApi from "../../../api/cartApi";
-import { useTranslation } from "react-i18next";
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const Index = () => {
   const {t} = useTranslation()
   const router = useRouter();

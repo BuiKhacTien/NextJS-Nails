@@ -3397,6 +3397,21 @@ font-size: 1.8em;
   }
 }
 
+.login_forgot_password:hover {
+  color: #6003ba;
+  cursor: pointer;
+}
+.content_box {
+  padding: 50px 20px;
+  margin: auto;
+  background: white;
+  min-height: 50vh;
+}
+@media (min-width: 768px) {
+  .content_box {
+    width: 500px;
+  }
+}
 
 /**  */
 @media (max-width:768px) {

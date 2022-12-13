@@ -5,8 +5,11 @@ import ButtonDeleteCart from "../../common/ButtonDeleteCart";
 import Button from "react-bootstrap/Button";
 import { showSuccess } from "../../../utils/app";
 import { useRouter } from "next/router";
-import { useTranslation } from "react-i18next";
+//
+
 import cartApi from "../../../api/cartApi";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 const CartItem = ({ data = {} }) => {
   const {

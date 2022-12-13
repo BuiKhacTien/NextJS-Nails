@@ -5,7 +5,18 @@ import Collapse from 'react-bootstrap/Collapse'
 import { useSelector } from 'react-redux';
 import appApi from '../../api/appApi'
 import { showSuccess } from '../../utils/app'
-import { useTranslation } from 'react-i18next';
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+   return {
+     props: {
+       ... (await serverSideTranslations(locale, ['translation'])),
+     },
+   }
+ }
+ 
+
+
 const FooterCollapse = ({ children, open, setOpen }) => {
    const { isMobile } = useSelector(state => state.app)
    if (isMobile) return <Collapse in={open}>

@@ -1,6 +1,16 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+//
+
 import { useSelector } from 'react-redux'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+   return {
+     props: {
+       ... (await serverSideTranslations(locale, ['translation'])),
+     },
+   }
+ }
+
 const SidebarHeader = () => {
    const {t} = useTranslation()
    const { user } = useSelector(state => state.user)

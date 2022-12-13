@@ -16,9 +16,11 @@ import { useDispatch, useSelector } from "react-redux";
 import userApi from "../../api/userApi";
 import { CATEGORIES } from "../../constants/constants";
 import appApi from "../../api/appApi";
-import { useTranslation } from "react-i18next";
-import { ButtonChange } from "./ButtonChange/ButtonChange";
+//
 
+import { ButtonChange } from "./ButtonChange/ButtonChange";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 
 const Index = () => {
   const { t } = useTranslation();

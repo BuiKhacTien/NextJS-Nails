@@ -5,7 +5,10 @@ import Button from "react-bootstrap/Button";
 import { BASE_IMG, formCart } from "../../../constants/appSetting";
 import { useDispatch, useSelector } from "react-redux";
 import cartApi from "../../../api/cartApi";
-import { useTranslation } from "react-i18next";
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const OrderCardItem = ({
   itemName = "",
   mainImage = "",

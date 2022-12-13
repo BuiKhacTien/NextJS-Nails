@@ -5,7 +5,10 @@ import Button from "react-bootstrap/Button";
 import Drawer from "../../common/Drawer";
 import MiniCart from "../../common/MiniCart";
 import { ORDER_ID } from "../../../constants/appSetting";
-import { useTranslation } from "react-i18next";
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const Index = () => {
   const router = useRouter()
   const {t} = useTranslation();

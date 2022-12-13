@@ -1,6 +1,9 @@
 import React from "react";
 import CheckBox from "../../common/CheckBox";
-import { useTranslation } from "react-i18next";
+//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+
 const FrequentCard = ({ item = {}, checked = false, change, index }) => {
   const { priceDiscount, name, size, color } = item;
   const onChange = (item) => {
