@@ -6,9 +6,15 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import userApi from "../../api/userApi";
 import ModalSuccess from "../../components/LoginRegister/ModalSuccess";
-//
-//
-//
+
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+  return {
+     props: {
+        ... (await serverSideTranslations(locale, ['translation'])),
+     },
+  }
+}
 
 const Index = ({ title = "Forgot Password" }) => {
   const dispatch = useDispatch();

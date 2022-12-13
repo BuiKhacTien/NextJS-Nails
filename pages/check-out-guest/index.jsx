@@ -8,8 +8,8 @@ import { showError } from "../../utils/app";
 import cartApi from "../../api/cartApi";
 import { useSelector } from "react-redux";
 import { ORDER_ID } from "../../constants/appSetting";
-//
-//
+
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 export async function getStaticProps({ locale }) {
    return {
       props: {
@@ -17,7 +17,7 @@ export async function getStaticProps({ locale }) {
       },
    }
 }
-//
+
 
 const params = {
   Address: "",

@@ -3,13 +3,7 @@ import React from 'react'
 
 import { useSelector } from 'react-redux'
 //
-export async function getStaticProps({ locale }) {
-   return {
-     props: {
-       ... (await serverSideTranslations(locale, ['translation'])),
-     },
-   }
- }
+//
 
 const SidebarHeader = () => {
    const {t} = useTranslation()

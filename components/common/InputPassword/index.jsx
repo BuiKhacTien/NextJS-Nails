@@ -4,13 +4,7 @@ import Form from 'react-bootstrap/Form'
 
 import CheckBox from '../CheckBox'
 //
-export async function getStaticProps({ locale }) {
-   return {
-     props: {
-       ... (await serverSideTranslations(locale, ['translation'])),
-     },
-   }
- }
+//
 
 const Index = ({ placeholder, value, onChange, idForm, required = false }) => {
    const [isShow, setIsShow] = useState(false)

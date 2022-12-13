@@ -8,7 +8,7 @@ import productApi from "../../api/productApi";
 
 import Pagination from '@mui/material/Pagination';
 
-//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 export async function getStaticProps({ locale }) {
    return {
       props: {

@@ -4,13 +4,7 @@ import Button from 'react-bootstrap/Button'
 //
 
 //
-export async function getStaticProps({ locale }) {
-   return {
-     props: {
-       ... (await serverSideTranslations(locale, ['translation'])),
-     },
-   }
- }
+//
 const SUCCESS = require('../../../assets/images/success.png')
 
 const Index = ({ ok, show = false, setShow }) => {

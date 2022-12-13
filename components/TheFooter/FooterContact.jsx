@@ -7,13 +7,7 @@ import appApi from '../../api/appApi'
 import { showSuccess } from '../../utils/app'
 //
 //
-export async function getStaticProps({ locale }) {
-   return {
-     props: {
-       ... (await serverSideTranslations(locale, ['translation'])),
-     },
-   }
- }
+//
  
 
 

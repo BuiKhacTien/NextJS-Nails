@@ -33,6 +33,14 @@ import { BASE_IMG } from '../../constants/appSetting';
 
 import { BsFacebook } from "react-icons/bs"
 
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+  return {
+     props: {
+        ... (await serverSideTranslations(locale, ['translation'])),
+     },
+  }
+}
 
 const getColorInSize = (info, featureId) => {
   if (info.productColorSize.length === 0) return {};

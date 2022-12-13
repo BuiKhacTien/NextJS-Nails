@@ -6,6 +6,16 @@ const Address = dynamic(() => import("../../../components/Account/Address"), {
   const MiniCart = dynamic(() => import("../../../components/common/MiniCart"), {
     ssr: false,
   });
+
+  import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+  export async function getStaticProps({ locale }) {
+    return {
+       props: {
+          ... (await serverSideTranslations(locale, ['translation'])),
+       },
+    }
+  }
+
 export default function Index({}) {
     
 

@@ -7,13 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 //
 
 //
-export async function getStaticProps({ locale }) {
-   return {
-     props: {
-       ... (await serverSideTranslations(locale, ['translation'])),
-     },
-   }
- }
+//
 
 const myAccount = [
    {

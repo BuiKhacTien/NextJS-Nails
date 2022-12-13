@@ -5,13 +5,7 @@ import { showError, showSuccess } from '../../../../utils/app'
 import InputPassword from '../../../common/InputPassword'
 //
 //
-export async function getStaticProps({ locale }) {
-   return {
-     props: {
-       ... (await serverSideTranslations(locale, ['translation'])),
-     },
-   }
- }
+//
 
 const init = {
    oldPassword: "",

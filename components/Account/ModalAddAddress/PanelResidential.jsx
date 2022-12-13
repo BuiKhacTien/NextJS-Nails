@@ -2,13 +2,7 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 //
 //
-export async function getStaticProps({ locale }) {
-   return {
-     props: {
-       ... (await serverSideTranslations(locale, ['translation'])),
-     },
-   }
- }
+//
 
 const PanelResidential = ({ state, setState }) => {
    const { address, address2, city, company, country, is_Default, zip_Code } = state

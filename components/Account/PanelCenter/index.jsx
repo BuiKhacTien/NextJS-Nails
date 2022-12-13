@@ -13,13 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import AvatarDropzone from './AvatarDropzone'
 //
 //
-export async function getStaticProps({ locale }) {
-   return {
-     props: {
-       ... (await serverSideTranslations(locale, ['translation'])),
-     },
-   }
- }
+//
 
 const Index = () => {
    const {t} = useTranslation()
