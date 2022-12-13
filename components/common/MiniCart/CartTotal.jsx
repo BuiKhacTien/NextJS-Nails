@@ -113,8 +113,8 @@ const CartTotal = ({ responsive = false }) => {
         className={`d-flex justify-content-between ${responsive ? "justify-content-md-end" : ""
           }`}
       >
-        <p>{t('Estimated Tax:')}</p>
-        <p>$0</p>
+        <p>{t('Estimated Tax')}</p>
+        <p>{`0`}</p>
       </div>
       {user.reward > 0 && (
         <div>

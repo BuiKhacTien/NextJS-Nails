@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { BASE_IMG } from "../../../constants/appSetting";
 import VideoInView from "../../common/VideoInView";
-
+import { useTranslation } from "next-i18next";
 const Index = ({ data, to }) => {
   const {
     slide = false,
@@ -23,6 +23,8 @@ const Index = ({ data, to }) => {
       ? ((videoHeight * screenWidth) / videoWidth) * 0.5
       : (videoHeight * screenWidth) / videoWidth
     : 200;
+
+  const { t } = useTranslation("translation") 
   return (
     <div className="card-category position_relative">
       {mediaType === "img" ? (
@@ -42,7 +44,7 @@ const Index = ({ data, to }) => {
       </div>
       <div className="position_absolute">
         <Link href={to} className="btn btn-secondary btn_view_more">
-          View More
+          {t("View more")}
         </Link>
       </div>
     </div>

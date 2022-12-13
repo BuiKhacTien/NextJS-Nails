@@ -23,7 +23,7 @@ const Index = () => {
     dispatch({ type: "app/openCartMini", payload: false });
     if (orderId) return router.push("/form-checkout/payment/card");
     if (isLogin) return router.push("/form-checkout/address-default");
-    return router.push("/checkout");
+    return router.push("/check-out-guest");
   };
   return (
     <Drawer open={openCartMini} setOpen={setOpen} anchor="right">

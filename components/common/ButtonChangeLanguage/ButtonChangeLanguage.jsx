@@ -1,6 +1,6 @@
 import React from "react";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import i18next from "i18next";
+import { useRouter } from "next/router"
 
 const GlobeIcon = ({ width = 24, height = 24 }) => (
   <svg
@@ -16,16 +16,12 @@ const GlobeIcon = ({ width = 24, height = 24 }) => (
 );
 
 const ButtonChangeLanguage = (props) => {
-  // const router = useRouter();
-  // const onToggleLanguageClick = (newLocale) => {
-  //   console.log({newLocale});
-  //   const { pathname, asPath, query } = router;
-  //   router.push({ pathname, query }, asPath, { locale: newLocale });
-  // };
+  const router = useRouter();
+  const onToggleLanguageClick = (newLocale) => {
+    const { asPath } = router;
+    router.push(asPath, asPath, { locale: newLocale });
+  };
 
-  const handleChangeLanguage = () => {
-    console.log("change language")
-  }
   return (
     <React.Fragment>
       <NavDropdown
@@ -35,7 +31,7 @@ const ButtonChangeLanguage = (props) => {
       >
         {props.dataLanguages.map(({ code, name, country_code }) => (
           <NavDropdown.Item
-            onClick={handleChangeLanguage}
+            onClick={() => onToggleLanguageClick(code)}
             key={country_code}
           >
             <div style={{ paddingTop: 10, paddingBottom: 10 }}>{name}</div>

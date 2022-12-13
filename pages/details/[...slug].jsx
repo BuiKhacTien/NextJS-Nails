@@ -34,13 +34,6 @@ import { BASE_IMG } from '../../constants/appSetting';
 import { BsFacebook } from "react-icons/bs"
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-export async function getStaticProps({ locale }) {
-  return {
-     props: {
-        ... (await serverSideTranslations(locale, ['translation'])),
-     },
-  }
-}
 
 const getColorInSize = (info, featureId) => {
   if (info.productColorSize.length === 0) return {};
@@ -124,12 +117,11 @@ export async function getServerSideProps(context) {
     // ogdescription = res.details.replace(/%20/g, " ");
   }
   return {
-    props: { URL, ogmainImage, ogfullName, ogdescription }, // will be passed to the page component as props
+    props: { URL, ogmainImage, ogfullName, ogdescription, ... (await serverSideTranslations(context.locale, ['translation'])),}, // will be passed to the page component as props
   }
 }
 
 export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) {
-  const currentLanguageCode = cookies.get('i18next') === 'en' ? true: false;
   const { t } = useTranslation("translation")
   const [id, setId] = useState(0);
   const [featureId, setFeatureId] = useState(0);

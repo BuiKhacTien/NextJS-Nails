@@ -223,7 +223,7 @@ const Index = () => {
             >
               <i className="fas fa-shopping-cart shopping_cart"></i>
             </Link>
-            {/* <ButtonChange /> */}
+            <ButtonChange />
           </div>
         </div>
         <div className="container">

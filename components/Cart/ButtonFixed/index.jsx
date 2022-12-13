@@ -27,7 +27,7 @@ const Index = () => {
     }
     if (orderId) return router.push("/form-checkout/payment/card");
     if (isLogin) return router.push("/form-checkout/address-default")
-    return router.push("/checkout")
+    return router.push("/check-out-guest")
   };
   const { totalCart = 0 } = cart;
   return (

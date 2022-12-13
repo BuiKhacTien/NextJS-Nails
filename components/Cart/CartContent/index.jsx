@@ -84,7 +84,6 @@ const Index = () => {
     <div>
       <h3>{t("Shopping Cart")}</h3>
       <div className="cart__list">
-        <div className="cart__price">{t("Price")}</div>
         <ul>
           {productCartModels &&
             productCartModels.map((item, i) => (

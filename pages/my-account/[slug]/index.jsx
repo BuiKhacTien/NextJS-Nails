@@ -76,7 +76,7 @@ const routes = [
 ]
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
    return {
       props: {
          ... (await serverSideTranslations(locale, ['translation'])),
@@ -110,7 +110,7 @@ export default function Index({}) {
               routes.map((value, index) => {
                 return slug === value.path && (
                   <div key={index+"account"}>
-                    <Profile/>
+                    <value.name />
                   </div>
                 )
               })

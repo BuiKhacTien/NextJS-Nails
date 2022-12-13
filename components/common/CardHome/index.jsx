@@ -500,7 +500,7 @@ const Index = ({
           )}
         </div>
         <div className={`card-home__action btn-flex px-2 `}>
-          <Button
+          {/* <Button
             onClick={addWishList}
             variant="warning"
             disabled={action === "wish"}
@@ -515,7 +515,7 @@ const Index = ({
               />
             )}
             <span>{t('Add To Wishlist')}</span>
-          </Button>
+          </Button> */}
           {/* {showWishList()} */}
           <ButtonAddCart data={data} />
           <Button
