@@ -31,13 +31,13 @@ const NextArrow = ({ onClick }) => (
 const PrevArrow = ({ onClick }) => (
   <i onClick={onClick} className="arrow fas fa-chevron-left"></i>
 );
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
   const [orders, setOrders] = useState([]);
   const [days, setDays] = useState(30);
   const { latest } = useSelector((state) => state.product);
   const dispatch = useDispatch();
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   const settings = {
     className: "slider variable-width",
     dots: false,

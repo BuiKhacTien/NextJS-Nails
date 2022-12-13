@@ -8,10 +8,10 @@ import { showSuccess, onShare } from "../../../utils/app";
 import Cookies from "js-cookie"
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = ({ reviews, data }) => {
   const { id, feature_Id } = data;
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation")
   const router = useRouter()
   const dispatch = useDispatch()
   const addWishList = () => {

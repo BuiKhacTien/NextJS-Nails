@@ -5,10 +5,10 @@ import Form from 'react-bootstrap/Form'
 import CheckBox from '../CheckBox'
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = ({ placeholder, value, onChange, idForm, required = false }) => {
    const [isShow, setIsShow] = useState(false)
-   const {t} = useTranslation()
+   const { t } = useTranslation("translation")
    return (
       <Form.Group className="mb-3 form__password" controlId={idForm}>
          <Form.Control required={required} type={isShow ? "text" : "password"} placeholder={placeholder} value={value} onChange={onChange} />

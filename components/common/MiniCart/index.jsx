@@ -15,9 +15,9 @@ import CartTotal from "./CartTotal";
 
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = ({ responsive = false, hideCoupon = true }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   const [currentTime, setCurrentTime] = React.useState(null);
   const { cart, loading, shippingFee } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);

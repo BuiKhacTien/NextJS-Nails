@@ -5,11 +5,12 @@ import Link from "next/link"
 import userApi from "../../../api/userApi";
 //
 //
+import { useTranslation } from 'next-i18next'
 
 const Index = () => {
   const [rewards, setRewards] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   React.useEffect(() => {
     getRewardsHistory();
   }, []);

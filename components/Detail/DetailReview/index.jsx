@@ -3,7 +3,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = ({ data = {} }) => {
   const [total, setTotal] = React.useState(
       data.numOf1Star +
@@ -26,7 +26,7 @@ const Index = ({ data = {} }) => {
     if (result) return result;
     return 0;
   };
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   // console.log({ data });
   return (
     <section className="detail-review">

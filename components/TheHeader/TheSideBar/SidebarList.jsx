@@ -4,12 +4,12 @@ import { useDispatch } from "react-redux";
 import { useRouter } from 'next/router'
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const SidebarList = ({ title = "", rows = [], to = "", close }) => {
   const [newRows, setNewRows] = React.useState([rows]);
   const router = useRouter()
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const handleClick = (v) => {
     if (v.name === "Sign Out") {
       dispatch({ type: "user/logout" });

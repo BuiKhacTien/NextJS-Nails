@@ -6,9 +6,9 @@ import { DATE_TIME_FORMAT } from "../../../constants/appSetting";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = ({ orderDate = "", orderTotal = 0, items = [], orderId = 0, name = "" }) => {
-   const {t} = useTranslation()
+   const { t } = useTranslation("translation")
    return (
       <div className="account-orders__card border mb-3">
          <div className="orders__card__header">

@@ -8,7 +8,7 @@ import moment from "moment";
 
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const formatDate = (date) => {
   return moment(date).format(DATE_TIME_FORMAT);
 };
@@ -32,7 +32,7 @@ const CardComment = ({
     feature_Id,
     reply_Id: id,
   };
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation")
   const [showRep, setShowRep] = React.useState(false);
   const [firstName, setFirstName] = useState('')
   useEffect(() => {

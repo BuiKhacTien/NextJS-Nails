@@ -8,10 +8,10 @@ import { ORDER_ID } from "../../../constants/appSetting";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
   const router = useRouter()
-  const {t} = useTranslation();
+  const { t } = useTranslation("translation");
   const { openCartMini } = useSelector((state) => state.app);
   const { isLogin } = useSelector((state) => state.user);
   const dispatch = useDispatch();

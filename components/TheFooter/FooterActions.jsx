@@ -8,9 +8,9 @@ import { showSuccess } from '../../utils/app'
 
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const FooterActions = () => {
-   const {t} = useTranslation()
+   const { t } = useTranslation("translation")
    const [email, setEmail] = React.useState('')
    const sendMailInviteFriend = (e) => {
       e.preventDefault()

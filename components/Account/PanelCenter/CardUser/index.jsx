@@ -6,9 +6,9 @@ import UpdatePassword from '../UpdatePassword'
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
-   const{t} = useTranslation()
+   const { t } = useTranslation("translation")
    const [openChangePass, setOpenChangePass] = React.useState(false)
    const [openEdit, setOpenEdit] = useState(false)
    const { user } = useSelector(state => state.user)

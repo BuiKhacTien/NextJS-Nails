@@ -24,11 +24,16 @@ import { LAST_VIEW } from "../constants/appSetting";
 import Slider from "react-slick";
 import Link from "next/link";
 //
-
+import { useTranslation } from 'next-i18next'
 import { GrPrevious, GrNext } from "react-icons/gr";
-//
-//
-//
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+   return {
+      props: {
+         ... (await serverSideTranslations(locale, ['translation'])),
+      },
+   }
+}
 export default function Home() {
   const [background, setBackground] = useState([]);
   const {
@@ -51,7 +56,7 @@ export default function Home() {
   const [numItem, setNumItem] = useState(7);
   const [hiddenLoadMore, setHiddenLoadMore] = useState(false);
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   useEffect(() => {
     getListHome();
     getBackground();

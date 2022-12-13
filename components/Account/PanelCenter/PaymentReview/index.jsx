@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation("translation");
   const { user } = useSelector((state) => state.user);
   const { reward = 0 } = user;
   return (

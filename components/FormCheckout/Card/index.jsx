@@ -16,11 +16,11 @@ import { useDispatch } from "react-redux";
 import { Spinner } from "react-bootstrap";
 
 //
-
+import { useTranslation } from 'next-i18next'
 //
 //
 const Index = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation")
   const [code, setCode] = useState("");
   const [date, setDate] = useState("");
   const [cards, setCards] = useState([]);

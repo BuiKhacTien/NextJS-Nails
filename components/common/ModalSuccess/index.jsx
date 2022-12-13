@@ -6,10 +6,10 @@ import Button from 'react-bootstrap/Button'
 //
 //
 const SUCCESS = require('../../../assets/images/success.png')
-
+import { useTranslation } from 'next-i18next'
 const Index = ({ ok, show = false, setShow }) => {
    const handleClose = () => setShow(false);
-   const {t} = useTranslation();
+   const { t } = useTranslation("translation");
    const handleShow = () => {
       setShow(true)
    };

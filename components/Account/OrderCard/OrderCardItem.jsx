@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import cartApi from "../../../api/cartApi";
 //
 //
-//
 
+import { useTranslation } from 'next-i18next'
 const OrderCardItem = ({
   itemName = "",
   mainImage = "",
@@ -27,7 +27,7 @@ const OrderCardItem = ({
   const handleRoute = () => {
     router.push(`/details/${slug_name.replace('%', '').replace("/", "").replace("+", "")}/${itemId}/${feature_Id}`);
   };
-  const {t}= useTranslation();
+  const { t }= useTranslation("translation");
   const dispatch = useDispatch();
   const [action, setAction] = useState("");
   const { cart } = useSelector((state) => state.cart);

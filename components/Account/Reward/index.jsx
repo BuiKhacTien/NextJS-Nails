@@ -6,9 +6,9 @@ import Discount from "../Discount";
 
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation")
   const { user } = useSelector((state) => state.user);
   return (
     <div id="invite-friend" className=" invite-friend content-box-right">

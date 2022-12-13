@@ -6,6 +6,8 @@ import { useQuery } from '../../../constants/constants'
 import _ from 'lodash'
 //
 //
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 export async function getStaticProps({ locale }) {
    return {
      props: {
@@ -15,7 +17,7 @@ export async function getStaticProps({ locale }) {
 }
 
 const Index = () => {
-   const {t} = useTranslation();
+   const { t } = useTranslation("translation");
    const query = useQuery()
    const params = {
       pageIndex: query.get('pageIndex') || '',

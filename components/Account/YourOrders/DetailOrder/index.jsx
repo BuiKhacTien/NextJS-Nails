@@ -9,9 +9,9 @@ import OrderCardItem from "../../OrderCard/OrderCardItem";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const [cart, setCart] = React.useState({});
   const [payment, setPayment] = React.useState({});
   const [method, setMethod] = React.useState({});

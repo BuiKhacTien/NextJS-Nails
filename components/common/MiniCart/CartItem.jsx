@@ -7,9 +7,9 @@ import ButtonQtyCart from "../ButtonQtyCart";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const CartItem = ({ item, deleteItem, updateItem }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   const { mainImage, fullName, quantity } = item;
   const price = item.price ? item.price : 0;
   const priceDiscount = item.priceDiscount ? item.priceDiscount : 0;

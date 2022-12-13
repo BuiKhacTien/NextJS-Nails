@@ -8,7 +8,7 @@ import { showSuccess } from '../../utils/app'
 //
 //
 //
- 
+import { useTranslation } from 'next-i18next'
 
 
 const FooterCollapse = ({ children, open, setOpen }) => {
@@ -22,7 +22,7 @@ const FooterCollapse = ({ children, open, setOpen }) => {
 }
 
 const FooterContact = () => {
-   const {t} = useTranslation()
+   const { t } = useTranslation("translation")
    const [params, setParams] = React.useState({
       comment: "",
       email: "",

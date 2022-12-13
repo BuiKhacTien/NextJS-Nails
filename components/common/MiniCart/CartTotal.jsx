@@ -9,9 +9,9 @@ import productApi from "../../../api/productApi";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const CartTotal = ({ responsive = false }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation")
   const [currentTime, setCurrentTime] = React.useState(null);
   const { cart, loading, shippingFee } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);

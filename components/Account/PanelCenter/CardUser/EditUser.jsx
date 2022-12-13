@@ -7,7 +7,7 @@ import { showError, showSuccess } from "../../../../utils/app";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const EditUser = ({ open, setOpen }) => {
   const [loading, setLoading] = React.useState(false)
   const { user } = useSelector((state) => state.user);
@@ -27,7 +27,7 @@ const EditUser = ({ open, setOpen }) => {
   const onChange = (nameKey, v) => {
     setInfo({ ...info, [nameKey]: v });
   };
-  const {t} = useTranslation();
+  const { t } = useTranslation("translation");
   const onSubmit = (e) => {
     e.preventDefault();
     const params = {

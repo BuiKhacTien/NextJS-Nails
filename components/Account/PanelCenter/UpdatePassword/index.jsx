@@ -6,7 +6,7 @@ import InputPassword from '../../../common/InputPassword'
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const init = {
    oldPassword: "",
    password: "",
@@ -21,7 +21,7 @@ const Index = ({ open, setOpen }) => {
    const [loading, setLoading] = React.useState(false)
    const [params, setParams] = React.useState(init)
    const { oldPassword, password, confirmPassword } = params
-   const {t} = useTranslation();
+   const { t } = useTranslation("translation");
    const onSubmit = (e) => {
       e.preventDefault()
       const { password, oldPassword, confirmPassword } = params

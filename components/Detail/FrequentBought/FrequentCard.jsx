@@ -3,13 +3,13 @@ import CheckBox from "../../common/CheckBox";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const FrequentCard = ({ item = {}, checked = false, change, index }) => {
   const { priceDiscount, name, size, color } = item;
   const onChange = (item) => {
     change(checked, item);
   };
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   return (
     <label className="frequent-cart">
       <CheckBox

@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import cartApi from "../../../api/cartApi";
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const CartItem = ({ data = {} }) => {
   const {
     fullName,
@@ -22,7 +22,7 @@ const CartItem = ({ data = {} }) => {
     group_Sale_Price = 0,
     slug_Name,
   } = data;
-  const {t}  = useTranslation()
+  const { t } = useTranslation("translation")
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
   const addWishList = () => {

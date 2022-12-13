@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link"
 //
-
+import { useTranslation } from 'next-i18next'
 
 const Index = () => {
-   const { t } = useTranslation()
+   const { t } = useTranslation("translation")
    return (
       <div id="communication" className="content-box-right communication mb-4">
          <h3 className="account__title">{t('Communication Preferentces')}</h3>

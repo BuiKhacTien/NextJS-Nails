@@ -5,9 +5,9 @@ import Button from "react-bootstrap/Button";
 //
 //
 
-
+import { useTranslation } from 'next-i18next'
 const FooterTop = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation")
   return (
     <div className="footer-top">
       <div className="footer-top__contact__block">

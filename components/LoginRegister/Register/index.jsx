@@ -8,7 +8,7 @@ import { showError, showSuccess } from "../../../utils/app";
 import { nextStepCheckout } from "../../../store/app/appActions";
 import { useState } from "react";
 import { useRouter } from "next/router";
-
+import { useTranslation } from 'next-i18next'
 //
 //
 //
@@ -21,7 +21,7 @@ const Index = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [rules, setRules] = useState(false);
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   const { stepCheckout } = useSelector((state) => state.app);
   const registerFB = () => {
     window.FB.login(

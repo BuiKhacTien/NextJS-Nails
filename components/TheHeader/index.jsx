@@ -21,9 +21,9 @@ import appApi from "../../api/appApi";
 import { ButtonChange } from "./ButtonChange/ButtonChange";
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const [openSidebar, setOpenSidebar] = React.useState(false);
   const [text, setText] = React.useState("");
   const [categories, setCategories] = React.useState("");

@@ -3,14 +3,14 @@ import Form from 'react-bootstrap/Form'
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const PanelResidential = ({ state, setState }) => {
    const { address, address2, city, company, country, is_Default, zip_Code } = state
    const handleState = (v) => {
       const result = { ...state, ...v }
       setState(result)
    }
-   const {t} = useTranslation()
+   const { t } = useTranslation("translation")
    return (
       <div>
          <Form.Group className="mb-3" controlId="address-street">

@@ -10,9 +10,18 @@ import OrderCardItem from "../../components/Account/OrderCard/OrderCardItem";
 
 //
 //
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+   return {
+      props: {
+         ... (await serverSideTranslations(locale, ['translation'])),
+      },
+   }
+}
 
 const Index = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const [cart, setCart] = React.useState({});
   const [payment, setPayment] = React.useState({});
   const [method, setMethod] = React.useState({});

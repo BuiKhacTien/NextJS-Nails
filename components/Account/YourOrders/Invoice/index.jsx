@@ -10,9 +10,9 @@ import moment from "moment";
 import { DATE_TIME_FORMAT } from "../../../../constants/appSetting";
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const [cart, setCart] = React.useState({});
   const [payment, setPayment] = React.useState({});
   const [method, setMethod] = React.useState({});

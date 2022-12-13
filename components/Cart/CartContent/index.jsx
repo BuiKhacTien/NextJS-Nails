@@ -10,9 +10,9 @@ import CardHome from "../../common/CardHome";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const { cart } = useSelector((state) => state.cart);
   const { productCartModels = [] } = cart;
   const { bestSellers } = useSelector((state) => state.product);

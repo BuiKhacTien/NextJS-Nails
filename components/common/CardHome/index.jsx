@@ -24,7 +24,7 @@ import CardComment from "./CardComment";
 import DetailComment from "../../Detail/DetailComment";
 import Discount from "./Discount";
 //
-
+import { useTranslation } from 'next-i18next'
 import Cookies from "js-cookie";
 import { isBuffer } from "lodash";
 //
@@ -93,7 +93,7 @@ const Index = ({
     group_Sale_Qty,
     group_Sale_Solded,
   } = data;
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const [showShare, setShowShare] = useState(false);
   const [action, setAction] = useState("");
   const [open, setOpen] = useState(false);

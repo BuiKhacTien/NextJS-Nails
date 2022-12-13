@@ -8,10 +8,10 @@ import { formCart, CART_ID } from '../../../constants/appSetting'
 import { getShippingFee } from '../../../store/cart/actions'
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = ({ data }) => {
    const { cart, loading } = useSelector(state => state.cart)
-   const {t} = useTranslation()
+   const { t } = useTranslation("translation")
    const dispatch = useDispatch()
    const onDelete = () => {
       const cartId = localStorage.getItem(CART_ID) || cart.id;

@@ -32,7 +32,7 @@ import { LAST_VIEW } from "../../constants/appSetting";
 import { BASE_IMG } from '../../constants/appSetting';
 
 import { BsFacebook } from "react-icons/bs"
-
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 export async function getStaticProps({ locale }) {
   return {
@@ -130,7 +130,7 @@ export async function getServerSideProps(context) {
 
 export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) {
   const currentLanguageCode = cookies.get('i18next') === 'en' ? true: false;
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation")
   const [id, setId] = useState(0);
   const [featureId, setFeatureId] = useState(0);
   const router = useRouter();

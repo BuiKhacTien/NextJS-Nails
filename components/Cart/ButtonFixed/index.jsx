@@ -7,9 +7,9 @@ import cartApi from "../../../api/cartApi";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   const router = useRouter();
   const { cart } = useSelector((state) => state.cart);
   const { isLogin } = useSelector((state) => state.user);

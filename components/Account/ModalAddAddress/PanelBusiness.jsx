@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 //
-
+import { useTranslation } from 'next-i18next'
 //
 //
 
@@ -11,7 +11,7 @@ const PanelBusiness = ({ state, setState }) => {
       const result = { ...state, ...v }
       setState(result)
    }
-   const {t} = useTranslation()
+   const { t } = useTranslation("translation")
    return (
       <div>
          <div>

@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic';
 import { useRouter } from "next/router";
 
 const SEND = require("../../../assets/images/send.png");
-
+import { useTranslation } from 'next-i18next'
 //
 //
 
@@ -38,7 +38,7 @@ const InputImage = ({ onChange, value }) => {
 };
 
 const Index = ({ data, name = "detail__review-stars" }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const { id, reply_Id = null, feature_id, feature_Id } = data;
   const [rate, setRate] = React.useState(0);
   const [content, setContent] = React.useState("");

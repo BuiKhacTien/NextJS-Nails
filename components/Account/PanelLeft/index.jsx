@@ -9,9 +9,9 @@ import  Cookie from 'js-cookie'
 import { useRouter } from "next/router";
 //
 //
-
+import { useTranslation } from 'next-i18next'
 function NavItem({ name, to }) {
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   const router = useRouter();
   const asPath = router.asPath;
   const checkActive = (asPath) => {
@@ -55,7 +55,7 @@ const Index = () => {
       to: "communication-preferences",
     },
   ];
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   const router = useRouter();
   const { user } = useSelector((state) => state.user);
   const { name } = user;

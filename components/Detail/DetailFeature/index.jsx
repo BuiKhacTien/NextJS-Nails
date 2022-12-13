@@ -17,7 +17,7 @@ import {
   FacebookShareButton,
   FacebookIcon,
 } from 'next-share';
-
+import { useTranslation } from 'next-i18next'
 const DISCOUNT_IMG = require("../../../assets/images/discount.png");
 //
 //
@@ -74,7 +74,7 @@ const Index = ({ data = {}, onSelected }) => {
     group_Sale_Price,
     isReachDiscountGroupSale
   );
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   React.useEffect(() => {
     if (featureId !== 0) {
       for (let i = 0; i < productColorSize.length; i++) {

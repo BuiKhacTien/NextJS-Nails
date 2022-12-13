@@ -8,7 +8,7 @@ import { showError } from "../../utils/app";
 import cartApi from "../../api/cartApi";
 import { useSelector } from "react-redux";
 import { ORDER_ID } from "../../constants/appSetting";
-
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 export async function getStaticProps({ locale }) {
    return {
@@ -157,7 +157,7 @@ const Index = () => {
     const { City, States } = await getAddress(code);
     setShipping({ ...shipping, [nameCity]: City, [nameState]: States });
   };
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation")
   return (
     <main className="bg-light">
       <div className="container bg-white py-3">

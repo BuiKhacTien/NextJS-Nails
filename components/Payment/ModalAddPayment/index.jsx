@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import cardApi from "../../../api/cardApi";
 
 //
-
+import { useTranslation } from 'next-i18next'
 //
 //
 const dtoParams = ({
@@ -31,7 +31,7 @@ const Index = ({ open = false, setOpen, ok, value = {}, setEdit }) => {
   const [date, setDate] = useState("");
   const [card, setCard] = useState(value);
   const { id = 0, expirationMonth, expirationYear } = value;
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   useEffect(() => {
     if (!expirationMonth || !expirationYear) return;
   }, [id]);

@@ -12,9 +12,9 @@ import FooterTop from "./FooterTop";
 
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const [resources, setResources] = useState([]);
   const [company, setCompany] = useState([]);
   const [shippingReturn, setShippingReturn] = useState([]);

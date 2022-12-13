@@ -9,9 +9,9 @@ import { formCart } from '../../constants/appSetting';
 import { getShippingFee } from '../../store/cart/actions';
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const ButtonAddCart = ({ data = {}, className = "", variant = "danger" }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation")
   const dispatch = useDispatch();
   const { id, feature_Id, } = data;
   const [action, setAction] = useState("");

@@ -7,10 +7,10 @@ import { showSuccess } from "../../../utils/app";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const ModalTips = ({ show = false, setShow }) => {
   const handleClose = () => setShow(false);
-  const {t} = useTranslation();
+  const { t } = useTranslation("translation");
   return (
     <Modal centered show={show} onHide={handleClose}>
       <Modal.Body>{"For security reasons, we don't store your full credit card details. If you need to change any information, please delete your saved card and add it as a new one."}</Modal.Body>
@@ -25,7 +25,7 @@ const ModalTips = ({ show = false, setShow }) => {
 const ItemCard = ({ item, onEdit, onDelete }) => {
   const { nameOnCard, cardNumber, id } = item
   const numShow = showCard(cardNumber)
-  const {t} = useTranslation();
+  const { t } = useTranslation("translation");
   return (
     <li>
       <span>{nameOnCard}</span>
@@ -43,7 +43,7 @@ const Index = () => {
   const [needUpdate, setNeedUpdate] = useState(true)
   const [cards, setCards] = useState([])
   const [edit, setEdit] = useState({})
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   useEffect(() => {
     if (needUpdate) {
       getCards()

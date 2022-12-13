@@ -5,7 +5,7 @@ import SidebarList from './SidebarList'
 import Drawer from '../../common/Drawer'
 import { useDispatch, useSelector } from 'react-redux'
 //
-
+import { useTranslation } from 'next-i18next'
 //
 //
 
@@ -53,7 +53,7 @@ const notLogin = [
 ]
 
 const Index = ({ children, open, setOpen }) => {
-   const { t } = useTranslation();
+   const { t } = useTranslation("translation");
    const [style, addStyle] = useState({ display: 'none' })
    const { isLogin } = useSelector(state => state.user)
    const [promotions, setPromotions] = useState([])

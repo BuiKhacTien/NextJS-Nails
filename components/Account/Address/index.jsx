@@ -10,12 +10,13 @@ import { ORDER_ID } from "../../../constants/appSetting";
 import ModalAddAddress from "../ModalAddAddress";
 import ModalConfirm from "../../common/ModalConfirm";
 //
+import { useTranslation } from 'next-i18next'
 //
 
 const Item = ({ item, setReLoad, onEdit }) => {
   const { name = "", company, address, address2, city, zip_Code, country, is_Default, id } = item;
   const [showWarning, setShowWarning] = useState(false);
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation")
   const onDefault = () => {
     userApi.defaultAddress(id).then((res) => {
       if (res && res.status === 200) {
@@ -82,7 +83,7 @@ const Item = ({ item, setReLoad, onEdit }) => {
 };
 
 const Index = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation")
   const [address, setAddress] = useState([]);
   const [show, setShow] = useState(false);
   const [reLoad, setReLoad] = useState(true);

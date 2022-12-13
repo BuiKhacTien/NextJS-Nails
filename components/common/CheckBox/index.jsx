@@ -3,7 +3,7 @@ import React from "react";
 
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = ({
   label,
   value,
@@ -13,7 +13,7 @@ const Index = ({
   type = "checkbox",
   name = "",
 }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   return (
     <label className={`nails-checkbox__wrapper ${className}`}>
       <div className="nails__checkbox">

@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = ({ data, onUpdate }) => {
   const [comment, setComment] = React.useState("");
 
@@ -32,7 +32,7 @@ const Index = ({ data, onUpdate }) => {
       stars: rate,
     };
   };
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const onSubmit = (e) => {
     e.preventDefault();
     if (!isLogin) return router.push("/login-register");

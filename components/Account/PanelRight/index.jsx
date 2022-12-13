@@ -6,10 +6,10 @@ import Link from "next/link";
 import userApi from "../../../api/userApi";
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
   const [addressInfo, setAddress] = React.useState({});
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   React.useEffect(() => {
     userApi.defaultShippingAddress().then((res) => {
       if (res) {

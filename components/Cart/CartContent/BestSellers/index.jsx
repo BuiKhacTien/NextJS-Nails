@@ -3,9 +3,9 @@ import Button from 'react-bootstrap/Button'
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
-   const {t} = useTranslation()
+   const { t } = useTranslation("translation")
    return (
       <div className="cart__save">
          <div className="d-flex">

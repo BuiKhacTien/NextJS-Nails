@@ -7,7 +7,7 @@ import cartApi from "../../../api/cartApi";
 import CartTotal from "../../common/MiniCart/CartTotal";
 //
 //
-//
+import { useTranslation } from 'next-i18next'
 const CartTotalPayment = () => {
   const {t}= useTranslation()
   const { cart } = useSelector((state) => state.cart);

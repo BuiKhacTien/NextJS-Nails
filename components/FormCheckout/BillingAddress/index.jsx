@@ -13,9 +13,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 //
 //
-
+import { useTranslation } from 'next-i18next'
 export default function Index() {
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const router = useRouter();
   const { isLogin, user } = useSelector((state) => state.user);
   const [defaultAddress, setDefaultAddress] = useState({})

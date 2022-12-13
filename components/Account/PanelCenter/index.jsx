@@ -14,9 +14,9 @@ import AvatarDropzone from './AvatarDropzone'
 //
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = () => {
-   const {t} = useTranslation()
+   const { t } = useTranslation("translation")
    const [avatarSelected, setAvatarSelected] = React.useState(null)
    const [openUpload, setOpenUpload] = React.useState(false)
    const [loading, setLoading] = React.useState(false)

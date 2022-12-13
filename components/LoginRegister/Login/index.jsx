@@ -13,7 +13,7 @@ import { clearInfoComments } from "../../../store/user/userActions";
 import productApi from "../../../api/productApi";
 //
 //
-
+import { useTranslation } from 'next-i18next'
 const Index = ({ title = "Good to see you again!" }) => {
   const dispatch = useDispatch();
   const [userName, setUserName] = useState("");
@@ -22,7 +22,7 @@ const Index = ({ title = "Good to see you again!" }) => {
   const infoComments = useSelector((state) => state.user.infoComments);
   const linkComment = useSelector((state) => state.user.link);
   const { pathname } = router;
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const login = (e) => {
     e.preventDefault();
     let param = { userName, password };

@@ -7,7 +7,7 @@ import PanelBusiness from "./PanelBusiness";
 import { useSelector } from "react-redux";
 import userApi from "../../../api/userApi";
 //
-//
+import { useTranslation } from 'next-i18next'
 //
 
 const defaultParams = {
@@ -18,7 +18,7 @@ const Index = ({ show, onSubmit, edit, setEdit }) => {
   const [params, setParams] = useState(defaultParams);
   const [isBusiness, setIsBusiness] = useState("residential");
   const { user } = useSelector((state) => state.user);
-  const{t} = useTranslation()
+  const { t } = useTranslation("translation")
   const handleClose = () => {
     setParams(defaultParams);
     onSubmit(false, false);

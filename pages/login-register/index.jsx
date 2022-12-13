@@ -5,22 +5,29 @@ import Tab from 'react-bootstrap/Tab'
 import dynamic from "next/dynamic";
 
 const Login = dynamic(
-  () => import("../../components/LoginRegister/Login"),
-  {
-    ssr: false,
-  }
+   () => import("../../components/LoginRegister/Login"),
+   {
+      ssr: false,
+   }
 );
 const Register = dynamic(
    () => import("../../components/LoginRegister/Register"),
    {
-     ssr: false,
+      ssr: false,
    }
- );
+);
 import { useSelector } from 'react-redux'
 import { useQuery } from '../../constants/constants'
-//
-//
-//
+
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+   return {
+      props: {
+         ... (await serverSideTranslations(locale, ['translation'])),
+      },
+   }
+}
 const Layout = ({ isMobile = false, children }) => {
    const [tab, setTab] = React.useState('0')
    const query = useQuery()
@@ -35,7 +42,7 @@ const Layout = ({ isMobile = false, children }) => {
          {children.map((child, index) => {
             const { title } = child.props
             return (
-               <Tab key={index} eventKey={index}   title={title}>
+               <Tab key={index} eventKey={index} title={title}>
                   {child}
                </Tab>
             )
@@ -54,7 +61,7 @@ const Layout = ({ isMobile = false, children }) => {
 }
 
 const Index = () => {
-   const {t} = useTranslation()
+   const { t } = useTranslation("translation")
    const { isMobile } = useSelector(state => state.app)
    return (
       <main className="bg-light">

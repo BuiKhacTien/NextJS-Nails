@@ -9,7 +9,7 @@ import cartApi from "../../../api/cartApi";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 //
-
+import { useTranslation } from 'next-i18next'
 import { useRouter } from "next/router";
 //
 //
@@ -41,7 +41,7 @@ const createFrequentlyItem = (item) => {
 };
 const Index = ({ data = {} }) => {
   const router = useRouter()
-  const { t } = useTranslation();
+  const { t } = useTranslation("translation");
   const [productFrequent, setProductFrequent] = React.useState([]);
   const [selected, setSelected] = React.useState([]);
   const [expanded, setExpanded] = React.useState(false);

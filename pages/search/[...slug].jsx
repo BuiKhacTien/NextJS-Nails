@@ -8,6 +8,14 @@ import CardHome from "../../components/common/CardHome"
 import Pagination from '@mui/material/Pagination';
 import Link from 'next/link';
 
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+export async function getStaticProps({ locale }) {
+   return {
+      props: {
+         ... (await serverSideTranslations(locale, ['translation'])),
+      },
+   }
+}
 
 export default function Index() {
   const [filters, setFilters] = useState({});

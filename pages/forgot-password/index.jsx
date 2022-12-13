@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import userApi from "../../api/userApi";
 import ModalSuccess from "../../components/LoginRegister/ModalSuccess";
-
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 export async function getStaticProps({ locale }) {
   return {
@@ -21,7 +21,7 @@ const Index = ({ title = "Forgot Password" }) => {
   const [userName, setUserName] = useState("");
   const [openSuccess, setOpenSuccess] = useState(false);
   const router = useRouter();
-  const {t} = useTranslation()
+  const { t } = useTranslation("translation")
   const handleClose = (status) => {
     setOpenSuccess(status)
     //   router.push('/')
