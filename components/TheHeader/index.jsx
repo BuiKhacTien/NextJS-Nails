@@ -19,7 +19,7 @@ import appApi from "../../api/appApi";
 //
 
 import { ButtonChange } from "./ButtonChange/ButtonChange";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = () => {

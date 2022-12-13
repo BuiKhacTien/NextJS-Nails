@@ -9,7 +9,7 @@ import cardApi from "../../../api/cardApi";
 
 //
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 const dtoParams = ({
   cardNumber,

@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 //
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 export async function getStaticProps({ locale }) {
    return {
      props: {

@@ -4,7 +4,7 @@ import moment from 'moment'
 import OrderCardItem from "./OrderCardItem";
 import { DATE_TIME_FORMAT } from "../../../constants/appSetting";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 export async function getStaticProps({ locale }) {
    return {
      props: {

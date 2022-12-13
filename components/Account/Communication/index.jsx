@@ -1,14 +1,7 @@
 import React from "react";
 import Link from "next/link"
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-export async function getStaticProps({ locale }) {
-   return {
-     props: {
-       ... (await serverSideTranslations(locale, ['translation'])),
-     },
-   }
- }
+
 
 const Index = () => {
    const { t } = useTranslation()

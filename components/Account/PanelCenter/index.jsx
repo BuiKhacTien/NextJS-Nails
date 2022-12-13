@@ -12,7 +12,7 @@ import { BASE_IMG } from '../../../constants/appSetting'
 import { useDispatch, useSelector } from 'react-redux'
 import AvatarDropzone from './AvatarDropzone'
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 export async function getStaticProps({ locale }) {
    return {
      props: {

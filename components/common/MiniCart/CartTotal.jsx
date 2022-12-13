@@ -7,7 +7,7 @@ import { CART_ID } from "../../../constants/appSetting";
 import { getShippingFee } from "../../../store/cart/actions";
 import productApi from "../../../api/productApi";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const CartTotal = ({ responsive = false }) => {

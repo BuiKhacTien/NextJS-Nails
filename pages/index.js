@@ -27,7 +27,7 @@ import Link from "next/link";
 
 import { GrPrevious, GrNext } from "react-icons/gr";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 export default function Home() {
   const [background, setBackground] = useState([]);

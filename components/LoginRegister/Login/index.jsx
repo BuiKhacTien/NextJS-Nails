@@ -11,7 +11,7 @@ import InputPassword from "../../common/InputPassword";
 
 import { clearInfoComments } from "../../../store/user/userActions";
 import productApi from "../../../api/productApi";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = ({ title = "Good to see you again!" }) => {

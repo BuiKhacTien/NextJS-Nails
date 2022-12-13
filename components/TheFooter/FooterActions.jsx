@@ -6,7 +6,7 @@ import appApi from '../../api/appApi'
 import { showSuccess } from '../../utils/app'
 //
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 export async function getStaticProps({ locale }) {
    return {
      props: {

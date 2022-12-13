@@ -27,7 +27,7 @@ import Discount from "./Discount";
 
 import Cookies from "js-cookie";
 import { isBuffer } from "lodash";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const LikeIcon = ({ isLiked }) => {

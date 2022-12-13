@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import userApi from "../../api/userApi";
 import ModalSuccess from "../../components/LoginRegister/ModalSuccess";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = ({ title = "Forgot Password" }) => {

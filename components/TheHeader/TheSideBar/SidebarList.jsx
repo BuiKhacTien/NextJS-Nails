@@ -2,7 +2,7 @@ import React from "react";
 //
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/router'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const SidebarList = ({ title = "", rows = [], to = "", close }) => {

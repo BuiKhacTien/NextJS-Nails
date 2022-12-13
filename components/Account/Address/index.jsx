@@ -9,7 +9,7 @@ import userApi from "../../../api/userApi";
 import { ORDER_ID } from "../../../constants/appSetting";
 import ModalAddAddress from "../ModalAddAddress";
 import ModalConfirm from "../../common/ModalConfirm";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Item = ({ item, setReLoad, onEdit }) => {

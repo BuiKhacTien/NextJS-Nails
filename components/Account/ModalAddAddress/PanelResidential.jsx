@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 export async function getStaticProps({ locale }) {
    return {
      props: {

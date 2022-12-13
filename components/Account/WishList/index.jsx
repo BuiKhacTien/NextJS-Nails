@@ -5,7 +5,7 @@ import CardHome from '../../common/CardHome'
 import { useQuery } from '../../../constants/constants'
 import _ from 'lodash'
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 export async function getStaticProps({ locale }) {
    return {
      props: {

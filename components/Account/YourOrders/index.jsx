@@ -8,7 +8,7 @@ import userApi from "../../../api/userApi";
 import productApi from "../../../api/productApi";
 //
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Item = (item) => {

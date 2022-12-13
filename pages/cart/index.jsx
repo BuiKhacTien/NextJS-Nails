@@ -6,7 +6,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import CartTotalPayment from '../../components/Cart/CartAside/CartTotalPayment'
 import productApi from '../../api/productApi'
 //import { CART_ID } from '../../../constants/appSetting'
-
+//
+export async function getStaticProps({ locale }) {
+   return {
+      props: {
+         ... (await serverSideTranslations(locale, ['translation'])),
+      },
+   }
+}
 
 export default function Index({}) {
   //  const { cart } = useSelector(state => state.cart)

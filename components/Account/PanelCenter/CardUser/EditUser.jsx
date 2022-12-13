@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import userApi from "../../../../api/userApi";
 import { showError, showSuccess } from "../../../../utils/app";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const EditUser = ({ open, setOpen }) => {

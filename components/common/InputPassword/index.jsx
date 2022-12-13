@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 //
 
 import CheckBox from '../CheckBox'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 export async function getStaticProps({ locale }) {
    return {
      props: {

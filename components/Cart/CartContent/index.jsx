@@ -8,7 +8,7 @@ import { showSuccess } from "../../../utils/app";
 import Slider from "react-slick";
 import CardHome from "../../common/CardHome";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = () => {

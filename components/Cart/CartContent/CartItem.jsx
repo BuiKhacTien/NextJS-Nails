@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 //
 
 import cartApi from "../../../api/cartApi";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const CartItem = ({ data = {} }) => {

@@ -19,7 +19,7 @@ const Register = dynamic(
 import { useSelector } from 'react-redux'
 import { useQuery } from '../../constants/constants'
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 export async function getStaticProps({ locale }) {
    return {
      props: {

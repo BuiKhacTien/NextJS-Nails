@@ -19,7 +19,7 @@ import {
 } from 'next-share';
 
 const DISCOUNT_IMG = require("../../../assets/images/discount.png");
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const showDiscountPrice = (price, discountPrice, group_Sale_Price, isReach) => {

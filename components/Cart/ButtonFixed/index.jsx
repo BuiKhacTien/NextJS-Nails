@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { ORDER_ID } from "../../../constants/appSetting";
 import cartApi from "../../../api/cartApi";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = () => {

@@ -6,7 +6,7 @@ import {  ORDER_ID } from "../../../constants/appSetting";
 import cartApi from "../../../api/cartApi";
 import CartTotal from "../../common/MiniCart/CartTotal";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 const CartTotalPayment = () => {
   const {t}= useTranslation()

@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import EditUser from './EditUser'
 import UpdatePassword from '../UpdatePassword'
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 export async function getStaticProps({ locale }) {
    return {
      props: {

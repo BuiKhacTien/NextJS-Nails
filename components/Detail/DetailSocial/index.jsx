@@ -6,7 +6,7 @@ import cartApi from "../../../api/cartApi";
 import { showSuccess, onShare } from "../../../utils/app";
 //
 import Cookies from "js-cookie"
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = ({ reviews, data }) => {

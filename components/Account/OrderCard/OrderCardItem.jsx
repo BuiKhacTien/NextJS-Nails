@@ -6,7 +6,7 @@ import { BASE_IMG, formCart } from "../../../constants/appSetting";
 import { useDispatch, useSelector } from "react-redux";
 import cartApi from "../../../api/cartApi";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const OrderCardItem = ({

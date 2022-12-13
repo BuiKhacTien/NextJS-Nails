@@ -4,7 +4,7 @@ import userApi from '../../../../api/userApi'
 import { showError, showSuccess } from '../../../../utils/app'
 import InputPassword from '../../../common/InputPassword'
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 export async function getStaticProps({ locale }) {
    return {
      props: {

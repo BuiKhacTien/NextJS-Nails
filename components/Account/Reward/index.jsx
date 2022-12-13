@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import Discount from "../Discount";
 //
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = () => {

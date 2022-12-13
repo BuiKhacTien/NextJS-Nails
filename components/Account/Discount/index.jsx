@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 //
 import Link from "next/link"
 import userApi from "../../../api/userApi";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = () => {

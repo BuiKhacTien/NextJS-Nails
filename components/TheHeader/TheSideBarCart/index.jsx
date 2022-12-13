@@ -6,7 +6,7 @@ import Drawer from "../../common/Drawer";
 import MiniCart from "../../common/MiniCart";
 import { ORDER_ID } from "../../../constants/appSetting";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = () => {

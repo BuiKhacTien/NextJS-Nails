@@ -7,7 +7,7 @@ import cartApi from '../../api/cartApi';
 
 import { formCart } from '../../constants/appSetting';
 import { getShippingFee } from '../../store/cart/actions';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const ButtonAddCart = ({ data = {}, className = "", variant = "danger" }) => {

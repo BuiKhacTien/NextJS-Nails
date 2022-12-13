@@ -7,7 +7,7 @@ import { DATE_TIME_FORMAT } from "../../../../constants/appSetting";
 import { showCard } from "../../../../constants/constants";
 import OrderCardItem from "../../OrderCard/OrderCardItem";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = () => {

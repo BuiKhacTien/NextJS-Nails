@@ -13,7 +13,7 @@ import productApi from "../../../api/productApi";
 import CartTotal from "./CartTotal";
 //
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = ({ responsive = false, hideCoupon = true }) => {

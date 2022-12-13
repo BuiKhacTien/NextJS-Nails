@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 const Index = () => {
   const router = useRouter();

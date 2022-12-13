@@ -7,7 +7,7 @@ import PanelBusiness from "./PanelBusiness";
 import { useSelector } from "react-redux";
 import userApi from "../../../api/userApi";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const defaultParams = {

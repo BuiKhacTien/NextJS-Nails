@@ -9,7 +9,14 @@ import cartApi from "../../api/cartApi";
 import { useSelector } from "react-redux";
 import { ORDER_ID } from "../../constants/appSetting";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
+export async function getStaticProps({ locale }) {
+   return {
+      props: {
+         ... (await serverSideTranslations(locale, ['translation'])),
+      },
+   }
+}
 //
 
 const params = {

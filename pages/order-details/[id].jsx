@@ -8,7 +8,7 @@ import { showCard } from "../../constants/constants";
 import OrderCardItem from "../../components/Account/OrderCard/OrderCardItem";
 //
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = () => {

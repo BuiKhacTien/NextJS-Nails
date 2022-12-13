@@ -7,7 +7,7 @@ import { BASE_IMG } from "../../../constants/appSetting";
 
 import  Cookie from 'js-cookie'
 import { useRouter } from "next/router";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 function NavItem({ name, to }) {

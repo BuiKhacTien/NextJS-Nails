@@ -1,7 +1,7 @@
 import React from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = ({ data = {} }) => {

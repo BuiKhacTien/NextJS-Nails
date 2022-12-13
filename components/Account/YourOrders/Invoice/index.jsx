@@ -8,7 +8,7 @@ import moment from "moment";
 //
 
 import { DATE_TIME_FORMAT } from "../../../../constants/appSetting";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = () => {

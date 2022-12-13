@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 
 const SEND = require("../../../assets/images/send.png");
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const InputImage = ({ onChange, value }) => {

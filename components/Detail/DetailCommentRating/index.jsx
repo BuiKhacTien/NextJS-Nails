@@ -6,7 +6,7 @@ import productApi from "../../../api/productApi";
 import { showSuccess } from "../../../utils/app";
 import { useSelector } from "react-redux";
 //
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = ({ data, onUpdate }) => {

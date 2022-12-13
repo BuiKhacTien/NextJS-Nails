@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 
 import Link from "next/link";
 import userApi from "../../../api/userApi";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = () => {

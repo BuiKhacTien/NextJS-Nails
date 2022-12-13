@@ -10,7 +10,7 @@ import FooterList from "./FooterList";
 import FooterTop from "./FooterTop";
 //
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const Index = () => {

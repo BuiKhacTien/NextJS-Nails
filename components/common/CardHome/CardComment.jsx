@@ -6,7 +6,7 @@ import NoAvatar from "../../../assets/images/no-avatar.svg";
 import moment from "moment";
 //
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 
 const formatDate = (date) => {

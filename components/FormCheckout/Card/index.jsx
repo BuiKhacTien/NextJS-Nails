@@ -17,7 +17,7 @@ import { Spinner } from "react-bootstrap";
 
 //
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 const Index = () => {
   const { t } = useTranslation()

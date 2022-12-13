@@ -11,7 +11,7 @@ import Tabs from "react-bootstrap/Tabs";
 
 import Tab from "react-bootstrap/Tab";
 import cookies from 'js-cookie'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+//
 //
 // components
 import DetailMedia from "../../components/Detail/DetailMedia";
