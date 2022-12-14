@@ -35,7 +35,7 @@ export default function Index() {
 
     useEffect(() => {
         getCategory();
-    }, [slug])
+    }, [slug, menu])
 
     const getCategory = () => {
         if (subCategory) {
