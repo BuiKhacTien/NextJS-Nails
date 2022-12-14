@@ -1,5 +1,6 @@
 import React from "react";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useRouter } from "next/router"
 
 const GlobeIcon = ({ width = 24, height = 24 }) => (
@@ -23,8 +24,23 @@ const ButtonChangeLanguage = (props) => {
   };
 
   return (
-    <React.Fragment>
-      <NavDropdown
+    <div >
+            <DropdownButton
+              id={`dropdown-button-drop-start`}
+              drop={"start"}
+              variant="secondary"
+              title={<GlobeIcon />}
+            >
+              {props.dataLanguages.map(({ code, name, country_code }) => (
+                <Dropdown.Item
+                  onClick={() => onToggleLanguageClick(code)}
+                  key={country_code}
+                >
+                  <div style={{ paddingTop: 10, paddingBottom: 10 }}>{name}</div>
+                </Dropdown.Item>
+              ))}
+            </DropdownButton>
+      {/* <NavDropdown
         id="nav-dropdown-dark-example"
         title={<GlobeIcon />}
         variant="secondary"
@@ -37,8 +53,8 @@ const ButtonChangeLanguage = (props) => {
             <div style={{ paddingTop: 10, paddingBottom: 10 }}>{name}</div>
           </NavDropdown.Item>
         ))}
-      </NavDropdown>
-    </React.Fragment>
+      </NavDropdown> */}
+    </div>
   );
 };
 

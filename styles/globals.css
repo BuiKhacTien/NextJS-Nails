@@ -236,7 +236,6 @@ a {
   position: relative;
   margin-bottom: 0;
 }
-
 .cart__num {
   position: absolute;
   top: 3px;
@@ -296,6 +295,7 @@ a {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  background-color: #0c9;
 }
 
 .header-actions__logo {
@@ -443,7 +443,7 @@ a {
      font-size: 23px;
      border: 1px solid white;
      border-radius: 3px;
-     margin: 10px;
+     margin: 25px 10px 10px 0;
      align-self: baseline;
      width: 35px;
      height: 35px;

@@ -140,9 +140,9 @@ const Index = () => {
                   </Link>
                 </div>
                 {/* button change lang */}
-                {/* <div className="header__link_languages header-actions__user-link">
+                <div className="header__link_languages header-actions__user-link">
                   <ButtonChange />
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
