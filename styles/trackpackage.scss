@@ -1,0 +1,149 @@
+.share-tracking {
+    text-align: center;
+    margin-bottom: 20px;
+    .fa-sign-out {
+      transform: rotate(-90deg);
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+  }
+  .track-package {
+    min-height: 80vh;
+  }
+  .progress__bar {
+    height: 100%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    ul {
+      list-style: none;
+      text-align: center;
+      display: flex;
+      padding: 0;
+      margin: 0;
+          width:100%;
+      li {
+        display: inline-block;
+        color: #333;
+        width: 100%;
+        &:last-child .line-step {
+          display: none;
+        }
+        > div.active {
+          .line-step {
+            &:before {
+              transform: scaleX(1);
+              animation: progress-up 0.3s linear forwards;
+            }
+          }
+        }
+        > div {
+          position: relative;
+          z-index: 0;
+          i {
+            border-radius: 50%;
+            font-size: 1.5rem;
+            background: white;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 3;
+            width: 18px;
+            color: var(--bs-purple);
+          }
+          .fa-circle {
+            color: #eee;
+          }
+          .line-step {
+            &:before {
+              content: "";
+              position: absolute;
+              top: 30%;
+              left: 55%;
+              width: 90%;
+              height: 5px;
+              background: var(--bs-purple);
+              z-index: 2;
+              transform: scaleX(0);
+              transform-origin: left;
+              border-radius: 10px;
+            }
+            &:after {
+              content: "";
+              position: absolute;
+              top: 30%;
+              left: 55%;
+              width: 90%;
+              height: 5px;
+              background: #eee;
+              z-index: 1;
+              transform-origin: left;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .track-package__header {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    .title__block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--bs-purple);
+      font-weight: bold;
+    }
+  }
+  .track-status {
+    text-align: center;
+    h5 {
+      font-weight: bold;
+      color: var(--bs-purple);
+    }
+  }
+  .track-card {
+    border: 3px solid #eee;
+    padding: 10px;
+    h4 {
+      font-weight: bold;
+      color: var(--bs-purple);
+    }
+    p {
+      margin-bottom: 0;
+    }
+    .track-card__note {
+      margin-top: 1rem;
+      font-style: italic;
+    }
+    a {
+      margin-bottom: 1rem;
+    }
+  }
+  @keyframes progress-up {
+    100% {
+      transform: scaleX(1);
+    }
+  }
+  @media (max-width: 768px) {
+    .track-package__header {
+      padding: 20px 0;
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        font-weight: bold;
+      }
+    }
+    .track-card {
+      margin: 0 -10px;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+    }
+  }
+  

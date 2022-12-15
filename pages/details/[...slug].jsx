@@ -157,6 +157,11 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
     getInfo(id, featureId);
     getTotalReview(id);
     getComment(id, featureId);
+
+    //set viewed for product
+    if (id !== 0 ) {
+      productApi.viewed(id, featureId)
+    }
   }, [id, featureId]);
   useEffect(() => {
     // update comment from socket
@@ -175,6 +180,7 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
       dispatch({ type: "app/clearComment" });
     }
   }, [comment]);
+
   const checkComment = (type, res) => {
     return (
       type &&
