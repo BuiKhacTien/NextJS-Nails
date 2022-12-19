@@ -1720,6 +1720,25 @@ label.star:before {
   background: #6003ba;
 }
 
+/* productColorSize.length > 2 */
+
+.detail_feature_size_box {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+.detail_feature_size_item {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 2px solid rgb(217, 217, 217);
+  margin: 10px 10px 0 0;
+  cursor: pointer;
+  box-sizing: content-box;
+}
+.detail_feature_size_item.active {
+  border: 2px solid rgb(236, 31, 255) !important;
+}
+
 @media screen and (max-width: 768px) {
   .detail-feature__actions {
      display: block;

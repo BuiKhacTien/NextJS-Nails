@@ -38,6 +38,7 @@ const showDiscountPrice = (price, discountPrice, group_Sale_Price, isReach) => {
   return { oldPrice: price, newPrice: discountPrice, savePrice: 0 };
 };
 const Index = ({ data = {}, onSelected }) => {
+  console.log(data)
   const [action, setAction] = useState("");
   const [activeItem, setActiveItem] = React.useState({});
   const { cart } = useSelector((state) => state.cart);
@@ -99,6 +100,16 @@ const Index = ({ data = {}, onSelected }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const onChangeSize = (v) => {
+    const { product_Id, feature_Id } = v.colors[0];
+    router.push(
+      `/details/${slug_Name
+        .replace("%", "").replace("/", "").replace("+", "")}/${product_Id}/${feature_Id}`,
+      undefined,
+      { shallow: true }
+    );
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
   const buyNow = () => {
     let params = [];
     if (productCartModels) {
@@ -196,39 +207,61 @@ const Index = ({ data = {}, onSelected }) => {
         <span>{t("FREE Shipping over $99.99")}</span>
       </div>
       {activeItem.color && <span>Color: {activeItem.color} </span>}
-      {productColorSize.map((v, i) => (
-        <div key={i} className="detail-feature__color">
-          <ul className="my-3">
-            {v.colors.map((item, index) => {
-              return (
-                <li
-                  onClick={() => onChange(item)}
-                  key={index}
-                  className={`detail-feature__color-item ${
-                    featureId == item.feature_Id ? "active" : ""
-                  }`}
-                >
-                  <img src={BASE_IMG + item.image} alt="color" />
-                </li>
-              );
-            })}
-          </ul>
-          {v.size && (
-            <div>
-              <span>Size: </span>
-              <span
-                className={`detail-feature-item__size ${
-                  v.colors.some((v) => featureId == v.feature_Id)
+      {
+        productColorSize.length > 2 && 
+        !productColorSize.some((value) => {
+          return value.colors.length > 1
+        }) ? (
+          <div className="detail_feature_size_box">
+            {
+              productColorSize.map((v, i) => (
+                <div
+                  key={i}
+                  onClick={() => onChangeSize(v)}
+                  className={`detail_feature_size_item ${v.colors.some((v) => featureId == v.feature_Id)
                     ? "active"
                     : ""
-                }`}
-              >
-                {v.size}
-              </span>
+                    }`}
+                >
+                  #{v.size}
+                </div>
+              ))
+            }
+          </div>
+        ) : (
+          productColorSize.map((v, i) => (
+            <div key={i} className="detail-feature__color">
+              <ul className="my-3">
+                {v.colors.map((item, index) => {
+                  return (
+                    <li
+                      onClick={() => onChange(item)}
+                      key={index}
+                      className={`detail-feature__color-item ${featureId == item.feature_Id ? "active" : ""
+                        }`}
+                    >
+                      <img src={BASE_IMG + item.image} alt="color" />
+                    </li>
+                  );
+                })}
+              </ul>
+              {v.size && (
+                <div>
+                  <span>Size: </span>
+                  <span
+                    className={`detail-feature-item__size ${v.colors.some((v) => featureId == v.feature_Id)
+                      ? "active"
+                      : ""
+                      }`}
+                  >
+                    {v.size}
+                  </span>
+                </div>
+              )}
             </div>
-          )}
-        </div>
-      ))}
+          ))
+        )
+      }
       <div className="detail-feature__actions">
         <div className="detail_action_qty">
           <ButtonQtyCart data={dataCart} />
