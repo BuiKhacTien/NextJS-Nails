@@ -29,6 +29,7 @@ const Index = () => {
   const [showModalSuccess, setShowModalSuccess] = useState(false);
   const dispatch = useDispatch();
   const { isLogin } = useSelector((state) => state.user);
+  const { cart } = useSelector((state) => state.cart);
   const router = useRouter();
   const billingAddressLocal = localStorage.getItem("Billing_Address");
   useEffect(() => {
@@ -68,6 +69,17 @@ const Index = () => {
   };
   const checkOutPayment = (e) => {
     e.preventDefault();
+    const params = {
+      cart_id: cart.id,
+      userIdNoAccount: null,
+    };
+    cartApi.checkOut(params).then((res) => {
+      if (res) {
+        localStorage.setItem(ORDER_ID, res.orderId);
+      }
+    });
+
+
     let order_id = null;
     order_id = window.localStorage.getItem(ORDER_ID);
     let { cardNumber, nameOnCard } = card;

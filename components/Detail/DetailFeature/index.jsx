@@ -38,7 +38,6 @@ const showDiscountPrice = (price, discountPrice, group_Sale_Price, isReach) => {
   return { oldPrice: price, newPrice: discountPrice, savePrice: 0 };
 };
 const Index = ({ data = {}, onSelected }) => {
-  console.log(data)
   const [action, setAction] = useState("");
   const [activeItem, setActiveItem] = React.useState({});
   const { cart } = useSelector((state) => state.cart);

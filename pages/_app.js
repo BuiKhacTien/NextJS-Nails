@@ -44,21 +44,21 @@ function MyApp({ Component, pageProps }) {
   return (
     <SSRProvider>
       <Provider store={store}>
-        <Layout>
-          <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-2L2Y4GQ1KB" />
-          <Script
-            id='google-analytics'
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || [];
+        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-2L2Y4GQ1KB" />
+        <Script
+          id='google-analytics'
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
                     gtag('js', new Date());
                     gtag('config', 'G-2L2Y4GQ1KB', {
                     page_path: window.location.pathname,
                     });
                     `,
-            }}
-          />
+          }}
+        />
+        <Layout>
           <Component {...pageProps} />
         </Layout>
       </Provider>

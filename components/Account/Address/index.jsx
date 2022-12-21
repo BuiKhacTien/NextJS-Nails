@@ -108,13 +108,14 @@ const Index = () => {
       userIdNoAccount: null,
     };
     if (isLogin) {
-      cartApi.checkOut(params).then((res) => {
-        if (res) {
-          localStorage.setItem(ORDER_ID, res.orderId);
-          // router.push("/form-checkout/payment/card");
-          router.push("/form-checkout/billing-address");
-        }
-      });
+      // cartApi.checkOut(params).then((res) => {
+      //   if (res) {
+      //     localStorage.setItem(ORDER_ID, res.orderId);
+      //     // router.push("/form-checkout/payment/card");
+      //     router.push("/form-checkout/billing-address");
+      //   }
+      // });
+      router.push("/form-checkout/billing-address");
     } else {
       router.push("/check-out-guest");
     }

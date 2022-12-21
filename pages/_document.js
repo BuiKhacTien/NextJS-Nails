@@ -12,6 +12,7 @@ export default function Document() {
           rel="stylesheet"
           href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         />
+        <meta name="google-site-verification" content="vKwUmykn6CBQjyfpxCfnw-sbkjaANiJEZKBYjR34fQs" />
       </Head>
       <body>
         <Main />
