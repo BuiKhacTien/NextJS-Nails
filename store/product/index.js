@@ -4,7 +4,6 @@ const initialState = {
   newProducts: [],
   bestSellers: [],
   lastOrdered: [],
-  lastView: [],
   dealsOfDay: [],
   diy: [],
   trending: [],

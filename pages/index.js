@@ -43,13 +43,13 @@ export default function Home() {
     diy,
     newProducts,
     bestSellers,
-    lastView,
     lastOrdered,
     featureVideo,
     flashSales,
     groupSale,
     dealsCenter,
   } = useSelector((state) => state.product);
+  const [lastView, setLastView] = useState([])
   const [lastOrderedNew, setLastOrderedNew] = useState([]);
   const { isMobile, numItemHome, yHeight } = useSelector((state) => state.app);
   const { isLogin, user } = useSelector((state) => state.user);
@@ -74,6 +74,12 @@ export default function Home() {
     getFeatureVideo();
     isMobile && setNumItem(3);
     // window.scrollTo({ top: 0 });
+    const lastViewLocal = localStorage.getItem("LAST_VIEW")
+    const lastViewLocalParse = lastViewLocal ? JSON.parse(lastViewLocal) : {}
+    if (Object.keys(lastViewLocalParse).length > 0 && lastViewLocalParse.constructor === Object) {
+      if (lastViewLocalParse.listLastView.length > 0)
+      setLastView(lastViewLocalParse.listLastView)
+    }
   }, []);
 
   useEffect(() => {
@@ -323,7 +329,7 @@ export default function Home() {
                 </p>
               )}
               {lastOrderedNew.length == 0 &&
-                lastView.map((v, i) => {
+                lastView?.slice(0,1).map((v, i) => {
                   // const userName = user.name ? `${t("Hello")} ${user.name}` : "";
                   return (
                     <div key={`1-${i}-${v.id}`}>

@@ -3921,8 +3921,25 @@ font-size: 1.8em;
 }
 
 /**  */
-
-
+.detail_last_view_title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 50px;
+}
+.detail_last_view_box {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  padding-bottom: 50px;
+}
+.detail_last_view_item {
+  padding: 10px;
+}
+@media screen and (max-width: 600px) {
+  .detail_last_view_item {
+    padding: 10px 0;
+  }
+}
 /**  */
 
 

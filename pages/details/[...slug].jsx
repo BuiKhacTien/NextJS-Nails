@@ -7,13 +7,14 @@ import { useRouter } from "next/router";
 
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Tabs from "react-bootstrap/Tabs";
-//
-
 import Tab from "react-bootstrap/Tab";
 import cookies from 'js-cookie'
+
+
 //
 //
 // components
+import CardHome from "../../components/common/CardHome"
 import DetailMedia from "../../components/Detail/DetailMedia";
 import DetailFeature from "../../components/Detail/DetailFeature";
 import DetailComment from "../../components/Detail/DetailComment";
@@ -93,7 +94,7 @@ export async function getServerSideProps(context) {
   const { resolvedUrl, query } = context
   const id = query.slug[1]
   // const featureId =  typeof(query.slug[2]) !== String ? '0' : query.slug[2]
-  const featureId =  query.slug[2]
+  const featureId = query.slug[2]
   const res = await productApi.info(id, featureId);
   // console.log(featureId)
   let URL = "";
@@ -117,12 +118,15 @@ export async function getServerSideProps(context) {
     // ogdescription = res.details.replace(/%20/g, " ");
   }
   return {
-    props: { URL, ogmainImage, ogfullName, ogdescription, ... (await serverSideTranslations(context.locale, ['translation'])),}, // will be passed to the page component as props
+    props: { URL, ogmainImage, ogfullName, ogdescription, ... (await serverSideTranslations(context.locale, ['translation'])), }, // will be passed to the page component as props
   }
 }
 
 export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) {
   const { t } = useTranslation("translation")
+  const { isMobile } = useSelector((state) => state.app);
+  const [lastView, setLastView] = useState([])
+  const [changeLastView, setChangeLastView] = useState(0)
   const [id, setId] = useState(0);
   const [featureId, setFeatureId] = useState(0);
   const router = useRouter();
@@ -133,6 +137,17 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
       setFeatureId(slug.slug[2]);
     }
   }, [slug]);
+
+  useEffect(() => {
+    //get lastview
+    console.log("changeeeeee")
+    const lastViewLocal = localStorage.getItem("LAST_VIEW")
+    const lastViewLocalParse = lastViewLocal ? JSON.parse(lastViewLocal) : {}
+    if (Object.keys(lastViewLocalParse).length > 0 && lastViewLocalParse.constructor === Object) {
+      if (lastViewLocalParse.listLastView.length > 0)
+        setLastView(lastViewLocalParse.listLastView)
+    }
+  }, [changeLastView]);
 
   const [related, setRelated] = useState([]);
   const [totalReview, setTotalReview] = useState({});
@@ -159,7 +174,7 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
     getComment(id, featureId);
 
     //set viewed for product
-    if (id !== 0 ) {
+    if (id !== 0) {
       productApi.viewed(id, featureId)
     }
   }, [id, featureId]);
@@ -190,9 +205,9 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
     );
   };
   // show wish list
-  const showWishList =()=>{
-      return false ? <DetailSocial reviews={totalReview} data={info} /> : null
-    }
+  const showWishList = () => {
+    return false ? <DetailSocial reviews={totalReview} data={info} /> : null
+  }
   const getNewComments = (comments, res, id = null) => {
     const existingItem = comments.findIndex((v) => v.id === res.id);
     let arr = [];
@@ -212,10 +227,10 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
           type: "product/setProducts",
           payload: { res: [infoWithFeatureId], nameKey: "info" },
         });
-        localStorage.setItem(
-          LAST_VIEW,
-          JSON.stringify(infoWithFeatureId)
-        );
+        // localStorage.setItem(
+        //   LAST_VIEW,
+        //   JSON.stringify(infoWithFeatureId)
+        // );
         const newGalleries = filterGallery(res);
         setGalleries(newGalleries);
       }
@@ -258,33 +273,70 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
   };
 
   const getLastView = () => {
-    const lastView = localStorage.getItem(LAST_VIEW);
-    if (lastView) {
-      const result = JSON.parse(lastView);
-      const { id, feature_Id } = result;
-      productApi.info(id, feature_Id)?.then((res) => {
+    let lastViewLocal = []
+    lastViewLocal = localStorage.getItem(LAST_VIEW);
+    const lastView = JSON.parse(lastViewLocal);
+    let result = lastView ? lastView : {}
+    if (Object.keys(result).length === 0 && result.constructor === Object) {
+      result = {
+        listLastView: []
+      }
+    }
+    if (Object.keys(result).length > 0 && result.constructor === Object) {
+      productApi.info(id, featureId)?.then((res) => {
         if (res) {
           let size = "";
           let color = "";
           res.productColorSize.forEach((value) => {
             value.colors.forEach((value2) => {
-              if (value2.feature_Id === feature_Id) {
+              if (value2.feature_Id === featureId) {
                 color = value2.color;
                 size = value.size;
                 return;
               }
             });
           });
-          const result = { ...res, feature_Id, color, size };
-          dispatch({
-            type: "product/setProducts",
-            payload: { res: [result], nameKey: "lastView" },
-          });
-          localStorage.setItem(LAST_VIEW, JSON.stringify(result));
+          if (result.listLastView[0]?.id != id || result.listLastView[0]?.feature_Id != featureId) {
+            //xóa bớt 1 feature ra
+            if (result.listLastView.length > 4) {
+              result.listLastView.pop()
+            }
+            const temp = { ...res, feature_Id: Number(featureId), color, size };
+            if (temp) {
+              result.listLastView.unshift(temp)
+            }
+            localStorage.setItem(LAST_VIEW, JSON.stringify(result));
+            setChangeLastView(featureId)
+          }
         }
       });
     }
   };
+
+  // const getLastView = () => {
+  //   const lastView = localStorage.getItem(LAST_VIEW);
+  //   if (lastView) {
+  //     const result = JSON.parse(lastView);
+  //     const { id, feature_Id } = result;
+  //     productApi.info(id, feature_Id)?.then((res) => {
+  //       if (res) {
+  //         let size = "";
+  //         let color = "";
+  //         res.productColorSize.forEach((value) => {
+  //           value.colors.forEach((value2) => {
+  //             if (value2.feature_Id === feature_Id) {
+  //               color = value2.color;
+  //               size = value.size;
+  //               return;
+  //             } 
+  //           });
+  //         });
+  //         const result = { ...res, feature_Id, color, size };
+  //         localStorage.setItem(LAST_VIEW, JSON.stringify(result));
+  //       }
+  //     });
+  //   }
+  // };
 
   const filterGallery = (info = {}) => {
     let newGallery = [];
@@ -324,80 +376,99 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
         <meta property="og:type" content="article" />
       </Head>
       <main>
-      <div className="container bg-white">
-        <Breadcrumb>
-          <Breadcrumb.Item onClick={() => router.push("/")}>
-            Home
-          </Breadcrumb.Item>
-          <Breadcrumb.Item active>Detail</Breadcrumb.Item>
-        </Breadcrumb>
-        <div className="row">
-          <div className="col-md-6 px-media">
-            {galleries.length > 0 ? (
-              <DetailMedia data={info} galleries={galleries} />
-            ) : (
-              ""
-            )}
+        <div className="container bg-white">
+          <Breadcrumb>
+            <Breadcrumb.Item onClick={() => router.push("/")}>
+              Home
+            </Breadcrumb.Item>
+            <Breadcrumb.Item active>Detail</Breadcrumb.Item>
+          </Breadcrumb>
+          <div className="row">
+            <div className="col-md-6 px-media">
+              {galleries.length > 0 ? (
+                <DetailMedia data={info} galleries={galleries} />
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="col-md-6">
+              <DetailFeature onSelected={setActiveFeature} data={info} />
+            </div>
           </div>
-          <div className="col-md-6">
-            <DetailFeature onSelected={setActiveFeature} data={info} />
+          <div className="row mt-4">
+            <div className="col-md-6">{/*<DetailComment data={info} />*/}</div>
+            <div className="col-md-6">
+              {showWishList()}
+              {/* <DetailSocial reviews={totalReview} data={info} /> */}
+            </div>
           </div>
+          {(details || specifications) && (
+            <div style={{ minHeight: "200px" }}>
+              <Tabs
+                defaultActiveKey="home"
+                id="uncontrolled-tab-example"
+                className="mb-3"
+              >
+                <Tab eventKey="home" title="Description">
+                  {details.length > 0 ? <div dangerouslySetInnerHTML={{ __html: details }}></div> : <div></div>}
+                </Tab>
+                <Tab eventKey="profile" title="Specs">
+                  {specifications.length > 0 ? <div dangerouslySetInnerHTML={{ __html: specifications }}></div> : <div></div>}
+                </Tab>
+              </Tabs>
+            </div>
+          )}
+          {productRelated.length > 0 && (
+            <h4 className="detail__title">Suggestion products for you</h4>
+          )}
+          {productRelated.length > 0 && <SliderCard rows={productRelated} />}
+          {productFrequent.length > 0 && (
+            <h4 className="detail__title">{t('Frequently bought together')}</h4>
+          )}
+          {productFrequent.length > 0 && <FrequentBought data={info} />}
+          <div className="row col-reverse">
+            <div className="col-md-6">
+              <DetailReview data={totalReview} />
+            </div>
+            <div className="col-md-6">
+              <DetailRating rate={avg_Stars} />
+            </div>
+          </div>
+          <div className="detail-feature">
+            <h5>{t('Reviews products')}</h5>
+          </div>
+          <div id="example-collapse-text">
+            <div className="comment__field mb-2">
+              <DetailComment data={{ id, feature_id: featureId }} />
+            </div>
+            {comments &&
+              comments.length > 0 &&
+              comments.map((v, i) => <CardComment key={i} {...v} />)}
+          </div>
+          {
+            lastView.length > 1 && (
+              <div className="detail_last_view_title">Last View</div>
+            )
+          }
+          <div className="detail_last_view_box">
+            {
+              lastView.length > 0 && lastView?.slice(1,5).map((value, index) => {
+                return (
+                  <div className="detail_last_view_item col-lg-3 col-sm-6 col-12" key={index+"lastViews"}>
+                    <CardHome
+                      name={`1-${index}-${value.id}`}
+                      fluid={isMobile}
+                      data={value}
+                    />
+                  </div>
+                )
+              })
+            }
+          </div>
+          {/*<DetailCommentRating data={info} onUpdate={setUpdate} />*/}
+          {/*<DetailCommentList comments={comments} />*/}
         </div>
-        <div className="row mt-4">
-          <div className="col-md-6">{/*<DetailComment data={info} />*/}</div>
-          <div className="col-md-6">
-            {showWishList()}
-            {/* <DetailSocial reviews={totalReview} data={info} /> */}
-          </div>
-        </div>
-        {(details || specifications) && (
-          <div style={{ minHeight: "200px" }}>
-            <Tabs
-              defaultActiveKey="home"
-              id="uncontrolled-tab-example"
-              className="mb-3"
-            >
-              <Tab eventKey="home" title="Description">
-                {details.length > 0 ? <div dangerouslySetInnerHTML={{ __html: details }}></div> : <div></div>}
-              </Tab>
-              <Tab eventKey="profile" title="Specs">
-                {specifications.length > 0 ? <div dangerouslySetInnerHTML={{ __html: specifications }}></div> : <div></div>}
-              </Tab>
-            </Tabs>
-          </div>
-        )}
-        {productRelated.length > 0 && (
-          <h4 className="detail__title">Suggestion products for you</h4>
-        )}
-        {productRelated.length > 0 && <SliderCard rows={productRelated} />}
-        {productFrequent.length > 0 && (
-          <h4 className="detail__title">{t('Frequently bought together')}</h4>
-        )}
-        {productFrequent.length > 0 && <FrequentBought data={info} />}
-        <div className="row col-reverse">
-          <div className="col-md-6">
-            <DetailReview data={totalReview} />
-          </div>
-          <div className="col-md-6">
-            <DetailRating rate={avg_Stars} />
-          </div>
-        </div>
-        <div className="detail-feature">
-          <h5>{t('Reviews products')}</h5>
-        </div>
-        <div id="example-collapse-text">
-          <div className="comment__field mb-2">
-            <DetailComment data={{ id, feature_id: featureId }} />
-          </div>
-          {comments &&
-            comments.length > 0 &&
-            comments.map((v, i) => <CardComment key={i} {...v} />)}
-        </div>
-
-        {/*<DetailCommentRating data={info} onUpdate={setUpdate} />*/}
-        {/*<DetailCommentList comments={comments} />*/}
-      </div>
-    </main>
+      </main>
     </>
   );
 }
