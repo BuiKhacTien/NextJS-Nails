@@ -74,7 +74,7 @@ export default function Home() {
     getFeatureVideo();
     isMobile && setNumItem(3);
     // window.scrollTo({ top: 0 });
-    const lastViewLocal = localStorage.getItem("LAST_VIEW")
+    const lastViewLocal = localStorage.getItem("list_last_view")
     const lastViewLocalParse = lastViewLocal ? JSON.parse(lastViewLocal) : {}
     if (Object.keys(lastViewLocalParse).length > 0 && lastViewLocalParse.constructor === Object) {
       if (lastViewLocalParse.listLastView.length > 0)

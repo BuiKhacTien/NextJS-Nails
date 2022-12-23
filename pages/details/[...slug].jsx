@@ -140,8 +140,7 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
 
   useEffect(() => {
     //get lastview
-    console.log("changeeeeee")
-    const lastViewLocal = localStorage.getItem("LAST_VIEW")
+    const lastViewLocal = localStorage.getItem("list_last_view")
     const lastViewLocalParse = lastViewLocal ? JSON.parse(lastViewLocal) : {}
     if (Object.keys(lastViewLocalParse).length > 0 && lastViewLocalParse.constructor === Object) {
       if (lastViewLocalParse.listLastView.length > 0)
@@ -274,7 +273,7 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
 
   const getLastView = () => {
     let lastViewLocal = []
-    lastViewLocal = localStorage.getItem(LAST_VIEW);
+    lastViewLocal = localStorage.getItem("list_last_view");
     const lastView = JSON.parse(lastViewLocal);
     let result = lastView ? lastView : {}
     if (Object.keys(result).length === 0 && result.constructor === Object) {
@@ -305,7 +304,7 @@ export default function Detail({ URL, ogmainImage, ogfullName, ogdescription }) 
             if (temp) {
               result.listLastView.unshift(temp)
             }
-            localStorage.setItem(LAST_VIEW, JSON.stringify(result));
+            localStorage.setItem("list_last_view", JSON.stringify(result));
             setChangeLastView(featureId)
           }
         }
