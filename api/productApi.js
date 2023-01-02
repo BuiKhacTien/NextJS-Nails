@@ -46,6 +46,10 @@ const productApi = {
     const url = `api/Catalog/${alias}/Product`;
     return axiosClient.get(url);
   },
+  dealsCenterSiteMap: () => {
+    const url = `api/DealsCenter`;
+    return axiosClient.get(url);
+  },
   dealsCenter: (alias = "") => {
     const url = alias ? `api/DealsCenter/${alias}/Product` : `api/DealsCenter`;
     return axiosClient.get(url);

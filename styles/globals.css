@@ -2247,8 +2247,8 @@ https://flickity.metafizzy.co
   }
 
   .slider__cell {
-    margin-right: 1rem !important;
-    padding: 10px;
+    /* margin-right: 1rem !important;
+    padding: 10px; */
   }
 
   .home-page__slider {
@@ -3941,7 +3941,20 @@ font-size: 1.8em;
   }
 }
 /**  */
-
+.frequently_product_box {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  padding-bottom: 50px;
+}
+.frequently_product_item {
+  padding: 10px;
+}
+@media screen and (max-width: 600px) {
+  .frequently_product_item {
+    padding: 10px 0;
+  }
+}
 
 /**  */
 
