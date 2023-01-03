@@ -4,57 +4,47 @@ import productApi from "../api/productApi";
 const EXTERNAL_DATA_URL = 'https://nailsbeautysupply.com';
 
 function generateSiteMap(categories, dealsCenter) {
-   // const category = [];
-   // const deals = [];
-   // for (const i in categories) {
-   //    category.push(categories[i].slug_Name);
-   // }
-   // for (const i in categories) {
-   //    const subCatalogModels = categories[i].subCatalogModels;
-   //    if (subCatalogModels.length > 0) {
-   //       for (const j in subCatalogModels) {
-   //          category.push(subCatalogModels[j].slug_Name);
-   //       }
-   //    }
-   // }
-   // for (const i in dealsCenter) {
-   //    deals.push(dealsCenter[i].slug_Name);
-   // }
+   const subCatalog = [];
+
+   for (const i in categories) {
+      const subCatalogModels = categories[i].subCatalogModels;
+      if (subCatalogModels.length > 0) {
+         for (const j in subCatalogModels) {
+            subCatalog.push({
+               slug_Name1: categories[i].slug_Name,
+               slug_Name2: subCatalogModels[j].slug_Name,
+            });
+         }
+      }
+   }
+
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     <!--We manually set the two URLs we know already-->
-     <url>
-       <loc>https://nailsbeautysupply.com</loc>
-     </url>
-     ${categories && categories.map(value => {
-      return `
+      <!--We manually set the two URLs we know already-->
       <url>
-        <loc>https://nailsbeautysupply.com/category/${value.slug_Name}</loc>
+         <loc>https://nailsbeautysupply.com</loc>
       </url>
-      `;
-    })}
-    <url>
-      <loc>https://nailsbeautysupply.com/tien</loc>
-    </url>
-    ${
-      categories && categories.forEach(value => {
-         value.subCatalogModels.length > 0 &&
-            value.subCatalogModels.map(model => {
-               return `
-               <url>
-                  <loc>https://nailsbeautysupply.com/category/${value.slug_Name}/${model.slug_Name}</loc>
-               </url>
-               `
-            })
-      }) 
-    }
-   ${dealsCenter && dealsCenter.map(value => {
-    return `
-  <url>
-      <loc>https://nailsbeautysupply.com/deals-center/${value.slug_Name}</loc>
-  </url>
-`;
-  })}
+      ${categories && categories.map(value => {
+         return `
+            <url>
+            <loc>https://nailsbeautysupply.com/category/${value.slug_Name}</loc>
+            </url>
+         `;
+      })}
+      ${subCatalog.length > 0 && subCatalog?.map(value => {
+         return `
+            <url>
+            <loc>https://nailsbeautysupply.com/category/${value.slug_Name1}/${value.slug_Name2}</loc>
+            </url>
+         `;
+      })}
+      ${dealsCenter && dealsCenter.map(value => {
+         return `
+            <url>
+                  <loc>https://nailsbeautysupply.com/deals-center/${value.slug_Name}</loc>
+            </url>
+         `;
+      })}
      <url>
         <loc>https://nailsbeautysupply.com/cart</loc>
      </url>
