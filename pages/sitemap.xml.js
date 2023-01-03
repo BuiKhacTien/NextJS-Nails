@@ -4,35 +4,57 @@ import productApi from "../api/productApi";
 const EXTERNAL_DATA_URL = 'https://nailsbeautysupply.com';
 
 function generateSiteMap(categories, dealsCenter) {
+   // const category = [];
+   // const deals = [];
+   // for (const i in categories) {
+   //    category.push(categories[i].slug_Name);
+   // }
+   // for (const i in categories) {
+   //    const subCatalogModels = categories[i].subCatalogModels;
+   //    if (subCatalogModels.length > 0) {
+   //       for (const j in subCatalogModels) {
+   //          category.push(subCatalogModels[j].slug_Name);
+   //       }
+   //    }
+   // }
+   // for (const i in dealsCenter) {
+   //    deals.push(dealsCenter[i].slug_Name);
+   // }
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the two URLs we know already-->
      <url>
        <loc>https://nailsbeautysupply.com</loc>
      </url>
-     ${categories
-       .map(({ value }) => {
-         return `
-       <url>
-           <loc>${`${EXTERNAL_DATA_URL}/category/${value.slug_Name}`}</loc>
-       </url>
-       ${value.subCatalogModels.length > 0 ? 
-        <url>
-            <loc>${`${EXTERNAL_DATA_URL}/category/${value.slug_Name}/${value.subCatalogModels.slug_Name}`}</loc>
-        </url> : 
-        ''}
-     `;
-       })
-       .join('')}
-       ${dealsCenter
-        .map(({ value }) => {
-          return `
-        <url>
-            <loc>${`${EXTERNAL_DATA_URL}/deals-center/${value.slug_Name}`}</loc>
-        </url>
+     ${categories && categories.map(value => {
+      return `
+      <url>
+        <loc>https://nailsbeautysupply.com/category/${value.slug_Name}</loc>
+      </url>
       `;
-        })
-        .join('')}
+    })}
+    <url>
+      <loc>https://nailsbeautysupply.com/tien</loc>
+    </url>
+    ${
+      categories && categories.forEach(value => {
+         value.subCatalogModels.length > 0 &&
+            value.subCatalogModels.map(model => {
+               return `
+               <url>
+                  <loc>https://nailsbeautysupply.com/category/${value.slug_Name}/${model.slug_Name}</loc>
+               </url>
+               `
+            })
+      }) 
+    }
+   ${dealsCenter && dealsCenter.map(value => {
+    return `
+  <url>
+      <loc>https://nailsbeautysupply.com/deals-center/${value.slug_Name}</loc>
+  </url>
+`;
+  })}
      <url>
         <loc>https://nailsbeautysupply.com/cart</loc>
      </url>
@@ -112,13 +134,13 @@ function SiteMap() {
 
 export async function getServerSideProps({ res }) {
   // We make an API call to gather the URLs for our site
-  const requestCategory = await fetch(BASE_API + productApi.catalog);
+  const requestCategory = await fetch("https://api.nailsbeautysupply.com/api/Catalog");
   const categories = await requestCategory.json();
 
-  const requestdeals = await fetch(BASE_API + productApi.dealsCenterSiteMap);
-  const dealsCenter = await requestdeals.json();
+  const resDealsCenter = await fetch("https://api.nailsbeautysupply.com/api/DealsCenter");
+  const dealsCenter = await resDealsCenter.json();
   // We generate the XML sitemap with the posts data
-  const sitemap = generateSiteMap(dealsCenter);
+  const sitemap = generateSiteMap(categories, dealsCenter);
 
   res.setHeader('Content-Type', 'text/xml');
   // we send the XML to the browser
