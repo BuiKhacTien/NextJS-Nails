@@ -115,7 +115,7 @@ export async function getServerSideProps(context) {
     URL = "https://nailsbeautysupply.com" + resolvedUrl
     ogfullName = res.fullName
     ogdescription = res.description.replace(/%20/g, " ").replace(/%2C/g, ", ");
-    // ogdescription = res.details.replace(/%20/g, " ");
+    // ogdescription = res.details.replaceAll(/%20/g, " ");
   }
   return {
     props: { URL, ogmainImage, ogfullName, ogdescription, ... (await serverSideTranslations(context.locale, ['translation'])), }, // will be passed to the page component as props

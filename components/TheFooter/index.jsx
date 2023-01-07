@@ -88,7 +88,7 @@ const Index = () => {
             <div className="col-md-6">
               <FooterList title={t("Shop by Category")}>
                 {menu.map((v, i) => (
-                  <Link key={i} href={`/category/${v.slug_Name.replace('/', '').replace('%', '')}`}>
+                  <Link key={i} href={`/category/${v.slug_Name.replaceAll('/', '').replaceAll('%', '').replaceAll('+', '')}`}>
                     {v.name}
                   </Link>
                 ))}

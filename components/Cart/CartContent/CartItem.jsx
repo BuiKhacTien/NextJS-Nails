@@ -48,7 +48,7 @@ const CartItem = ({ data = {} }) => {
         <div className="col-3 align-self-center">
           <img
             onClick={() =>
-              router.push(`/details/${slug_Name.replace('%', '').replace("/", "").replace("+", "")}/${id}/${feature_Id}`)
+              router.push(`/details/${slug_Name.replaceAll('%', '').replaceAll("/", "").replaceAll("+", "")}/${id}/${feature_Id}`)
             }
             className="cart-item__img"
             src={BASE_IMG + mainImage}
@@ -58,7 +58,7 @@ const CartItem = ({ data = {} }) => {
         <div className="col-7">
           <p
             onClick={() =>
-              router.push(`/details/${slug_Name.replace('%', '').replace("/", "").replace("+", "")}/${id}/${feature_Id}`)
+              router.push(`/details/${slug_Name.replaceAll('%', '').replaceAll("/", "").replaceAll("+", "")}/${id}/${feature_Id}`)
             }
             className="cart-item__title"
           >

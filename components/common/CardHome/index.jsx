@@ -211,7 +211,7 @@ const Index = ({
   };
   const onShare = () => {
     const url = `https://nailsbeautysupply.com/details/${slug_Name
-      .replace("%", "").replace("/", "").replace("+", "")}/${data.id}/${data.feature_Id}`;
+      .replaceAll("%", "").replaceAll("/", "").replaceAll("+", "")}/${data.id}/${data.feature_Id}`;
     window.FB.ui(
       {
         display: "dialog",
@@ -370,7 +370,7 @@ const Index = ({
         <div className="card-home__title__block container">
           <Link
             href={`/details/${slug_Name
-              ?.replace("%", "").replace("/", "").replace("+", "")}/${id}/${feature_Id}`}
+              ?.replaceAll("%", "").replaceAll("/", "").replaceAll("+", "")}/${id}/${feature_Id}`}
           >
             <p>{data.fullName}</p>
           </Link>
@@ -419,7 +419,7 @@ const Index = ({
           <div className="card-home-image">
             <Link
               href={`/details/${slug_Name
-                ?.replace("%", "").replace("/", "").replace("+", "")}/${id}/${feature_Id}`}
+                ?.replaceAll("%", "").replaceAll("/", "").replaceAll("+", "")}/${id}/${feature_Id}`}
             >
               <img src={BASE_IMG + mainImage} alt="background" className={isMobile ? "card_home_img_mobile" : "card_home_img_pc"} />
             </Link>

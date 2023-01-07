@@ -92,7 +92,7 @@ const Index = ({ data = {}, onSelected }) => {
     const { product_Id, feature_Id } = item;
     router.push(
       `/details/${slug_Name
-        .replace("%", "").replace("/", "").replace("+", "")}/${product_Id}/${feature_Id}`,
+        .replaceAll("%", "").replaceAll("/", "").replaceAll("+", "")}/${product_Id}/${feature_Id}`,
       undefined,
       { shallow: true }
     );
@@ -103,7 +103,7 @@ const Index = ({ data = {}, onSelected }) => {
     const { product_Id, feature_Id } = v.colors[0];
     router.push(
       `/details/${slug_Name
-        .replace("%", "").replace("/", "").replace("+", "")}/${product_Id}/${feature_Id}`,
+        .replaceAll("%", "").replaceAll("/", "").replaceAll("+", "")}/${product_Id}/${feature_Id}`,
       undefined,
       { shallow: true }
     );

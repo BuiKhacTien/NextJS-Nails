@@ -16,7 +16,7 @@ const GMAIL = require("../../../assets/images/gmail.png");
 const SharePanel = (props) => {
   const { slug_Name, feature_Id, id, mainImage, fullName, description } = props.data;
   const url = `https://nailsbeautysupply.com/details/${slug_Name
-    .replace("/", "").replace("%", "").replace("+", "")}/${id}/${feature_Id}`;
+    .replaceAll("/", "").replaceAll("%", "").replaceAll("+", "")}/${id}/${feature_Id}`;
 
   const handleClickCopy = () => {
     navigator.clipboard.writeText(url);
@@ -40,7 +40,7 @@ const SharePanel = (props) => {
     }
   };
   const handleClickGmail = () => {
-    // const msgbody = `${BASE_API}${data.slug_Name.replace('/', '')}/${data.id}/${data.feature_Id}`;
+    // const msgbody = `${BASE_API}${data.slug_Name.replaceAll('/', '')}/${data.id}/${data.feature_Id}`;
     const urlGmail =
       "https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=Your+Subject+here&body=" +
       url +

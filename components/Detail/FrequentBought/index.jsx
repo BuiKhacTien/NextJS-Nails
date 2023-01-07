@@ -135,11 +135,11 @@ const Index = ({ data = {} }) => {
   };
   const handleClickProductPrequent = (v) => {
     if (v.slug_Name) {
-      router.push(`/details/${v.slug_Name.replace('%', '').replace("/", "").replace("+", "").replace("+", "")}/${v.id}/${v.feature_Id}`);
+      router.push(`/details/${v.slug_Name.replaceAll('%', '').replaceAll("/", "").replaceAll("+", "")}/${v.id}/${v.feature_Id}`);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      const slug_Name = v.name.trim().toLowerCase().replace(/ /g, '-')
-      router.push(`/details/${slug_Name.replace('%', '').replace("/", "").replace("+", "").replace("+", "")}/${v.id}/${v.feature_Id}`);
+      const slug_Name = v.name.trim().toLowerCase().replaceAll(/ /g, '-')
+      router.push(`/details/${slug_Name.replaceAll('%', '').replaceAll("/", "").replaceAll("+", "")}/${v.id}/${v.feature_Id}`);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }

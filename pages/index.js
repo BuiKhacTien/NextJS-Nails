@@ -561,7 +561,7 @@ export default function Home() {
                     {newProduct.length > 0 && (
                       <p className="title-category__home">
                         <span>{t(item.name.toUpperCase())}</span>
-                        <Link href={`/${to}/${slug_Name.replace("%", "").replace("/", "").replace("+", "")}`}>
+                        <Link href={`/${to}/${slug_Name.replaceAll("%", "").replaceAll("/", "").replaceAll("+", "")}`}>
                           <span>{t("View All")}</span>
                         </Link>
                       </p>
