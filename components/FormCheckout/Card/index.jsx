@@ -9,6 +9,7 @@ import { showError, showSuccess } from "../../../utils/app";
 import Modal from "react-bootstrap/Modal";
 import { useEffect } from "react";
 import cardApi from "../../../api/cardApi";
+import userApi from "../../../api/userApi";
 import { showCard } from "../../../constants/constants";
 import { CART_ID, ORDER_ID } from "../../../constants/appSetting";
 import { useRouter } from "next/router";
@@ -16,11 +17,16 @@ import { useDispatch } from "react-redux";
 import { Spinner } from "react-bootstrap";
 
 //
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from "next-i18next";
 //
 //
 const Index = () => {
-  const { t } = useTranslation("translation")
+  const { t } = useTranslation("translation");
+  const [surveyOption, setSurveyOption] = useState({
+    order_id: 0,
+    deliveryDate: "2025-12-30",
+    email: "buikhactien@gmail.com",
+  });
   const [code, setCode] = useState("");
   const [date, setDate] = useState("");
   const [cards, setCards] = useState([]);
@@ -28,7 +34,7 @@ const Index = () => {
   const [loading, setLoading] = useState(false);
   const [showModalSuccess, setShowModalSuccess] = useState(false);
   const dispatch = useDispatch();
-  const { isLogin } = useSelector((state) => state.user);
+  const { isLogin, user } = useSelector((state) => state.user);
   const { cart } = useSelector((state) => state.cart);
   const router = useRouter();
   const billingAddressLocal = localStorage.getItem("Billing_Address");
@@ -69,19 +75,36 @@ const Index = () => {
   };
   const checkOutPayment = (e) => {
     e.preventDefault();
+    let orderID = 0;
     const params = {
       cart_id: cart.id,
       userIdNoAccount: null,
     };
-    cartApi.checkOut(params).then((res) => {
-      if (res) {
-        localStorage.setItem(ORDER_ID, res.orderId);
-      }
-    });
-
-
-    let order_id = null;
-    order_id = window.localStorage.getItem(ORDER_ID);
+    cartApi
+      .checkOut(params)
+      .then((res) => {
+        if (res) {
+          localStorage.setItem(ORDER_ID, res.orderId);
+          orderID = res.orderId;
+        }
+      })
+      .then(() => {
+        if (orderID > 0) {
+          cartApi.paymentId(orderID).then((res) => {
+            console.log("paymentId", res);
+            if (res) {
+              const date = new Date(res.orderDate);
+              date.setDate(date.getDate() + 3);
+              const formattedDate = date.toISOString().slice(0, 10);
+              setSurveyOption({
+                email: user.email,
+                deliveryDate: formattedDate,
+                order_id: orderID,
+              });
+            }
+          });
+        }
+      });
     let { cardNumber, nameOnCard } = card;
     if (cardNumber === "" || code === "" || nameOnCard === "" || date === "") {
       showError("Fields * do not be blank");
@@ -92,7 +115,7 @@ const Index = () => {
     const { ExpirationMonth, ExpirationYear } = handleDate(date);
 
     let param = {
-      order_id: order_id,
+      order_id: orderID,
       pin2fa: null,
       card: [
         {
@@ -112,7 +135,7 @@ const Index = () => {
         city: billingAddressLocal.city,
         state: billingAddressLocal.state,
         country: "blank",
-      }
+      },
     };
     setLoading(true);
     cartApi
@@ -126,16 +149,18 @@ const Index = () => {
       })
       .catch((e) => setLoading(false));
   };
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  console.log("Card survetOption", surveyOption);
   return (
     <main className="bg-white">
       <div className="container__small">
-        <h1 className="text-center py-3">{t('Payment Method')}</h1>
-        <Button variant="success">{t('Credit/Debit Card')}</Button>
-        <p>{t('All major cards accepted.')}</p>
+        <h1 className="text-center py-3">{t("Payment Method")}</h1>
+        <Button variant="success">{t("Credit/Debit Card")}</Button>
+        <p>{t("All major cards accepted.")}</p>
         <div className="d-flex justify-content-between mb-4">
           <ul className="list-card">
             <li className="sprite card_icons amex"></li>
@@ -211,7 +236,7 @@ const Index = () => {
                 aria-hidden="true"
               />
             )}
-            <span>{t('Confirm Payment')}</span>
+            <span>{t("Confirm Payment")}</span>
           </Button>
         </Form>
         <Modal centered show={show} onHide={handleClose}>
@@ -237,6 +262,7 @@ const Index = () => {
           ok={handleOk}
           show={showModalSuccess}
           setShow={setShowModalSuccess}
+          surveyOption={surveyOption}
         />
       </div>
     </main>
