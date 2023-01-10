@@ -207,7 +207,7 @@ const Index = ({ data = {}, onSelected }) => {
       </div>
       {activeItem.color && <span>Color: {activeItem.color} </span>}
       {
-        productColorSize.length > 2 && 
+        productColorSize.length > 1 && 
         !productColorSize.some((value) => {
           return value.colors.length > 1
         }) ? (
